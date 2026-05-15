@@ -182,8 +182,8 @@ nav {
 }
 
 nav.solid {
-  background: var(--ink);
-  border-bottom: 1px solid rgba(228, 233, 245, 0.08);
+  background: #101c34;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.14);
   padding: 18px 48px;
 }
 
@@ -1485,8 +1485,9 @@ nav.solid {
 }
 
 footer {
-  border-top: 1px solid rgba(228, 233, 245, 0.07);
-  color: rgba(228, 233, 245, 0.38);
+  background: #101c34;
+  border-top: 1px solid rgba(14, 165, 233, 0.1);
+  color: rgba(228, 233, 245, 0.4);
   display: flex;
   font-family: var(--cond);
   font-size: 12px;
@@ -2982,30 +2983,48 @@ body.reduced-motion .sk-forecast {
    awards, contact) keep their dark bg — premium contrast.
    ============================================================ */
 
-/* Nav — always has dark background in light mode so text is readable */
+/* ── NAV: cream in light mode, dark-navy in dark mode ── */
 [data-theme="light"] nav,
 [data-theme="light"] nav.solid {
-  background: var(--ink);
-  border-bottom: 1px solid rgba(228, 233, 245, 0.1);
+  background: #faf6ee;
+  border-bottom: 1px solid rgba(8, 14, 60, 0.1);
+}
+
+[data-theme="light"] .nmark {
+  color: var(--ink);
+}
+
+[data-theme="light"] .nmark span {
+  color: var(--rust);
+}
+
+[data-theme="light"] .nlink,
+[data-theme="light"] .link-reset {
+  color: rgba(8, 14, 60, 0.52);
+}
+
+[data-theme="light"] .nlink:hover,
+[data-theme="light"] .link-reset:hover {
+  color: var(--ink);
+}
+
+[data-theme="light"] .menu-btn {
+  border-color: rgba(8, 14, 60, 0.2);
+  color: var(--ink);
+}
+
+[data-theme="light"] .open-pill {
+  color: var(--ink);
+  border-color: rgba(21, 88, 232, 0.4);
+}
+
+[data-theme="light"] .open-pill-dot {
+  background: var(--electric);
 }
 
 /* Hero text overrides — see consolidated block at end of file */
 
-/* Ticker — becomes light band matching hero */
-[data-theme="light"] .ticker-wrap {
-  background: var(--bg2);
-  border-top-color: rgba(11, 13, 20, 0.1);
-  border-bottom-color: rgba(11, 13, 20, 0.1);
-}
-
-[data-theme="light"] .ticker-item {
-  color: rgba(11, 13, 20, 0.42);
-}
-
-[data-theme="light"] .ticker-item.accent,
-[data-theme="light"] .ticker-sep {
-  color: var(--rust);
-}
+/* Ticker — see consolidated rule at end of file */
 
 /* Manifesto + Work — light blue with gentle contrast vs hero */
 [data-theme="light"] #manifesto,
@@ -3118,6 +3137,29 @@ body.reduced-motion .sk-forecast {
 /* Ring text on hero */
 [data-theme="light"] .ring-text {
   fill: rgba(8, 14, 60, 0.1);
+}
+
+/* ── FOOTER: cream in light mode ── */
+[data-theme="light"] footer {
+  background: #faf6ee;
+  border-top-color: rgba(8, 14, 60, 0.1);
+  color: rgba(8, 14, 60, 0.45);
+}
+
+/* ── TICKER band: warm cream in light mode, matches nav/footer ── */
+[data-theme="light"] .ticker-wrap {
+  background: #f0eade;
+  border-top-color: rgba(8, 14, 60, 0.08);
+  border-bottom-color: rgba(8, 14, 60, 0.08);
+}
+
+[data-theme="light"] .ticker-item {
+  color: rgba(8, 14, 60, 0.4);
+}
+
+[data-theme="light"] .ticker-item.accent,
+[data-theme="light"] .ticker-sep {
+  color: var(--rust);
 }
 
 /* body::after noise — reduce on light mode */
