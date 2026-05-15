@@ -1,9 +1,11 @@
 import RevealOnScroll from '../shared/RevealOnScroll';
+import Decoration from '../shared/Decoration';
 
-export default function Manifesto({ manifesto, numbers, reducedMotion }) {
+export default function Manifesto({ manifesto, numbers, reducedMotion, decorations = [] }) {
   return (
     <>
       <section id="manifesto">
+        {decorations.map((d) => <Decoration key={d.id} {...d} />)}
         <div className="sec-label">{manifesto.eyebrow}</div>
         <div className="manifesto-layout">
           <RevealOnScroll as="h2" className="manifesto-big" disabled={reducedMotion}>

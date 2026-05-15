@@ -20,7 +20,7 @@ export default function HomePage({ profile, navigate, reducedMotion }) {
   return (
     <main id="main-content">
       <Hero person={profile.person} ticker={profile.ticker} reducedMotion={reducedMotion} decorations={decorations.filter((item) => item.section === 'hero')} />
-      <Manifesto manifesto={profile.manifesto} numbers={profile.numbers} reducedMotion={reducedMotion} />
+      <Manifesto manifesto={profile.manifesto} numbers={profile.numbers} reducedMotion={reducedMotion} decorations={decorations.filter((item) => item.section === 'manifesto')} />
       <Story experience={profile.experience} reducedMotion={reducedMotion} decorations={decorations.filter((item) => item.section === 'story')} />
       <Work projects={profile.projects} navigate={navigate} reducedMotion={reducedMotion} decorations={decorations.filter((item) => item.section === 'work')} />
       <Awards awards={profile.awards} reducedMotion={reducedMotion} decorations={decorations.filter((item) => item.section === 'awards')} />

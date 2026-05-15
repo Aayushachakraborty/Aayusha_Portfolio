@@ -9,7 +9,31 @@
       "width": "420px",
       "height": "100%",
       "color": "var(--electric)",
-      "opacity": 0.06
+      "opacity": 0.05
+    },
+    {
+      "id": "d7",
+      "section": "hero",
+      "type": "bar-chart",
+      "bottom": "110px",
+      "left": "52px",
+      "width": "130px",
+      "height": "110px",
+      "color": "var(--electric)",
+      "opacity": 0.55,
+      "animate": "float"
+    },
+    {
+      "id": "d8",
+      "section": "manifesto",
+      "type": "forecast-cone",
+      "top": "48px",
+      "right": "64px",
+      "width": "210px",
+      "height": "105px",
+      "color": "var(--rust)",
+      "opacity": 0.48,
+      "animate": "float-rev"
     },
     {
       "id": "d2",
@@ -25,13 +49,14 @@
     {
       "id": "d3",
       "section": "story",
-      "type": "node-graph",
-      "top": "40px",
-      "right": "40px",
-      "width": "220px",
-      "height": "220px",
+      "type": "neural-pulse",
+      "top": "60px",
+      "right": "44px",
+      "width": "200px",
+      "height": "160px",
       "color": "var(--electric)",
-      "opacity": 0.08
+      "opacity": 0.5,
+      "animate": "float"
     },
     {
       "id": "d4",
@@ -56,6 +81,18 @@
       "opacity": 0.05
     },
     {
+      "id": "d9",
+      "section": "contact",
+      "type": "supply-flow",
+      "top": "72px",
+      "right": "64px",
+      "width": "158px",
+      "height": "158px",
+      "color": "var(--electric)",
+      "opacity": 0.45,
+      "animate": "float-rev"
+    },
+    {
       "id": "d6",
       "section": "contact",
       "type": "flow-tree",
@@ -64,7 +101,7 @@
       "width": "260px",
       "height": "260px",
       "color": "var(--electric)",
-      "opacity": 0.06
+      "opacity": 0.05
     }
   ]
 }

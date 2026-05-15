@@ -1,5 +1,5 @@
 :root {
-  --ink: #0b0d14;
+  --ink: #080e1c;
   --paper: #e4e9f5;
   --paper2: #d8dff0;
   --rust: #d4521e;
@@ -8,38 +8,37 @@
   --electric2: #38bdf8;
   --sage: #10b981;
   --gold: #f0b429;
-  --surface: rgba(228, 233, 245, 0.04);
-  --surface-md: rgba(228, 233, 245, 0.08);
-  --border: rgba(228, 233, 245, 0.1);
-  --border-md: rgba(228, 233, 245, 0.18);
+  --surface: rgba(228, 233, 245, 0.05);
+  --surface-md: rgba(228, 233, 245, 0.09);
+  --border: rgba(228, 233, 245, 0.11);
+  --border-md: rgba(228, 233, 245, 0.2);
   /* Semantic bg/fg — the ONLY vars that change for dark↔light */
-  --bg: #0b0d14;
+  --bg: #080e1c;
   --fg: #e4e9f5;
-  --bg2: #0f1320;
+  --bg2: #0d1830;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Barlow', sans-serif;
   --cond: 'Barlow Condensed', sans-serif;
 }
 
 [data-theme="light"] {
-  /* --ink/--paper stay the same — dark sections keep dark bg + light text */
-  --ink: #0b0d14;
+  --ink: #080e1c;
   --paper: #e4e9f5;
-  --paper2: #eceffe;
-  --rust: #d4521e;
-  --rust2: #f06424;
-  --electric: #1d6ef5;
-  --electric2: #3a7ef7;
+  --paper2: #c8d8ff;
+  --rust: #c94a18;
+  --rust2: #e85e22;
+  --electric: #1558e8;
+  --electric2: #2f6ef5;
   --sage: #059669;
-  --gold: #d49820;
-  --surface: rgba(11, 13, 20, 0.04);
-  --surface-md: rgba(11, 13, 20, 0.07);
-  --border: rgba(11, 13, 20, 0.1);
-  --border-md: rgba(11, 13, 20, 0.18);
-  /* THE ACTUAL FIX: semantic vars that drive body/hero backgrounds */
-  --bg: #f5f7ff;
-  --fg: #0b0d14;
-  --bg2: #eef0ff;
+  --gold: #c88c10;
+  --surface: rgba(8, 14, 60, 0.055);
+  --surface-md: rgba(8, 14, 60, 0.1);
+  --border: rgba(8, 14, 60, 0.13);
+  --border-md: rgba(8, 14, 60, 0.22);
+  /* Vivid light palette */
+  --bg: #e8f0ff;
+  --fg: #080e1c;
+  --bg2: #d6e3ff;
 }
 
 *,
@@ -333,7 +332,7 @@ nav.solid {
 }
 
 #hero {
-  background: linear-gradient(160deg, #0b0d14 0%, #0d1020 50%, #0b0d14 100%);
+  background: linear-gradient(160deg, #080e1c 0%, #0c1628 50%, #080e1c 100%);
   display: grid;
   grid-template-rows: 1fr auto;
   min-height: 100vh;
@@ -613,7 +612,7 @@ nav.solid {
 }
 
 #numbers {
-  background: linear-gradient(135deg, #0a2a4a 0%, #0b0d14 60%, #0a1a30 100%);
+  background: linear-gradient(135deg, #0a2245 0%, #080e1c 60%, #0a1a2e 100%);
   border-bottom: 2px solid var(--electric);
   border-top: 2px solid var(--electric);
   display: grid;
@@ -1214,14 +1213,15 @@ nav.solid {
 }
 
 #contact {
-  background: linear-gradient(135deg, #0b0d14 0%, #091624 60%, #0b0d14 100%);
+  background: linear-gradient(135deg, #080e1c 0%, #091a2c 60%, #080e1c 100%);
   min-height: auto;
   overflow: hidden;
-  padding: 80px 48px 60px;
+  padding: 64px 48px 52px;
 }
 
 .contact-bg-text {
-  bottom: -16px;
+  left: -8px;
+  top: -6px;
   color: rgba(228, 233, 245, 0.028);
   font-family: var(--serif);
   font-size: clamp(96px, 17vw, 220px);
@@ -1230,7 +1230,8 @@ nav.solid {
   line-height: 1;
   pointer-events: none;
   position: absolute;
-  right: -8px;
+  right: auto;
+  z-index: 1;
 }
 
 .contact-pre {
@@ -1240,7 +1241,7 @@ nav.solid {
 .contact-head {
   font-size: clamp(42px, 7.5vw, 92px);
   line-height: 0.9;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   max-width: 8ch;
 }
 
@@ -1255,7 +1256,7 @@ nav.solid {
   font-style: italic;
   font-weight: 300;
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   max-width: 620px;
 }
 
@@ -1264,6 +1265,7 @@ nav.solid {
   display: grid;
   gap: 28px;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  margin-top: 4px;
   position: relative;
   z-index: 2;
 }
@@ -1371,6 +1373,7 @@ nav.solid {
   align-content: start;
   display: grid;
   gap: 14px;
+  margin-top: -108px;
   padding: 28px;
 }
 
@@ -2554,6 +2557,10 @@ nav.solid {
   .project-body {
     grid-template-columns: 1fr;
   }
+
+  .contact-form {
+    margin-top: -56px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2645,6 +2652,15 @@ nav.solid {
 
   .contact-sub {
     margin-bottom: 24px;
+  }
+
+  .contact-form {
+    margin-top: 0;
+  }
+
+  .contact-bg-text {
+    left: -4px;
+    top: 12px;
   }
 
   .filter-chip {
@@ -2839,6 +2855,117 @@ nav.solid {
 }
 
 /* ============================================================
+   ANIMATED STICKER SYSTEM
+   Canva-style floating data-viz graphics with CSS 3D feel.
+   ============================================================ */
+
+@keyframes sticker-float {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes sticker-float-rev {
+  0%, 100% { transform: translateY(-4px) rotate(1.5deg); }
+  50% { transform: translateY(-14px) rotate(-1.5deg); }
+}
+
+@keyframes sticker-float-gold {
+  0%, 100% { transform: translateY(0px) rotate(1deg) scale(1); }
+  50% { transform: translateY(-10px) rotate(-1deg) scale(1.04); }
+}
+
+@keyframes bar-breathe {
+  0%, 100% { transform: scaleY(1); opacity: 0.9; }
+  50% { transform: scaleY(0.76); opacity: 0.6; }
+}
+
+@keyframes edge-flow {
+  0% { stroke-dashoffset: 80; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.45); }
+}
+
+@keyframes forecast-trace {
+  0% { stroke-dashoffset: 280; opacity: 0.3; }
+  60%, 100% { stroke-dashoffset: 0; opacity: 0.9; }
+}
+
+[data-sticker="float"] {
+  animation: sticker-float 4.2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 22px rgba(14, 165, 233, 0.22));
+}
+
+[data-sticker="float-rev"] {
+  animation: sticker-float-rev 5s ease-in-out infinite;
+  filter: drop-shadow(0 8px 22px rgba(212, 82, 30, 0.22));
+}
+
+[data-sticker="float-gold"] {
+  animation: sticker-float-gold 3.8s ease-in-out infinite 0.6s;
+  filter: drop-shadow(0 8px 22px rgba(240, 180, 41, 0.28));
+}
+
+/* Bar stickers */
+.sk-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+}
+.sk-bar-1 { animation: bar-breathe 2.6s ease-in-out infinite 0s; }
+.sk-bar-2 { animation: bar-breathe 2.6s ease-in-out infinite 0.42s; }
+.sk-bar-3 { animation: bar-breathe 2.6s ease-in-out infinite 0.84s; }
+.sk-bar-4 { animation: bar-breathe 2.6s ease-in-out infinite 1.26s; }
+.sk-bar-5 { animation: bar-breathe 2.6s ease-in-out infinite 1.68s; }
+
+/* Network / supply chain edges */
+.sk-edge { stroke-dasharray: 80; }
+.sk-edge-1 { animation: edge-flow 2s linear infinite 0s; }
+.sk-edge-2 { animation: edge-flow 2s linear infinite 0.66s; }
+.sk-edge-3 { animation: edge-flow 2s linear infinite 1.33s; }
+.sk-edge-4 { animation: edge-flow 2s linear infinite 0.33s; }
+.sk-edge-5 { animation: edge-flow 2s linear infinite 1s; }
+.sk-edge-6 { animation: edge-flow 2s linear infinite 1.66s; }
+
+/* Neural nodes */
+.sk-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.sk-node-1 { animation: node-pulse 2.4s ease-in-out infinite 0s; }
+.sk-node-2 { animation: node-pulse 2.4s ease-in-out infinite 0.48s; }
+.sk-node-3 { animation: node-pulse 2.4s ease-in-out infinite 0.96s; }
+.sk-node-4 { animation: node-pulse 2.4s ease-in-out infinite 1.44s; }
+.sk-node-5 { animation: node-pulse 2.4s ease-in-out infinite 1.92s; }
+
+/* Forecast trace line */
+.sk-forecast {
+  stroke-dasharray: 280;
+  animation: forecast-trace 3.5s ease-out infinite alternate;
+}
+
+/* Respect reduced-motion across all sticker elements */
+body.reduced-motion [data-sticker],
+body.reduced-motion .sk-bar,
+body.reduced-motion .sk-edge-1,
+body.reduced-motion .sk-edge-2,
+body.reduced-motion .sk-edge-3,
+body.reduced-motion .sk-edge-4,
+body.reduced-motion .sk-edge-5,
+body.reduced-motion .sk-edge-6,
+body.reduced-motion .sk-node-1,
+body.reduced-motion .sk-node-2,
+body.reduced-motion .sk-node-3,
+body.reduced-motion .sk-node-4,
+body.reduced-motion .sk-node-5,
+body.reduced-motion .sk-forecast {
+  animation: none !important;
+  filter: none !important;
+}
+
+/* ============================================================
    LIGHT THEME OVERRIDES
    Strategy: body/hero become light. Dark sections (story,
    awards, contact) keep their dark bg — premium contrast.
@@ -2895,10 +3022,10 @@ nav.solid {
   color: var(--rust);
 }
 
-/* Manifesto + Work — use --paper (light) already, just ensure text correct */
+/* Manifesto + Work — light blue with gentle contrast vs hero */
 [data-theme="light"] #manifesto,
 [data-theme="light"] #work {
-  background: #ffffff;
+  background: #edf4ff;
   color: var(--fg);
 }
 
@@ -2911,14 +3038,7 @@ nav.solid {
   background: var(--ink);
 }
 
-/* Skills + project pages — already use paper2 which changes ✓ */
-[data-theme="light"] #skills,
-[data-theme="light"] #videocv,
-[data-theme="light"] .project-page,
-[data-theme="light"] .project-demo-page {
-  background: var(--paper2);
-  color: var(--fg);
-}
+/* Skills, videocv, project pages — handled by rules below */
 
 /* Project cards, demo panels — in dark sections they stay dark ✓ */
 /* In project page (light bg), these need lighter surface */
@@ -2941,8 +3061,28 @@ nav.solid {
   opacity: 0.015;
 }
 
-/* Gradient hero bg in light mode */
+/* Gradient hero bg — vivid light blue → bright lavender → warm apricot */
 [data-theme="light"] #hero {
-  background: linear-gradient(160deg, #f5f7ff 0%, #eef0ff 55%, #f5f7ff 100%);
+  background: linear-gradient(155deg, #ddeeff 0%, #cdd6ff 40%, #ffddd0 100%);
 }
 
+/* Skills section — vivid lavender signals AI/ML competency zone */
+[data-theme="light"] #skills,
+[data-theme="light"] #videocv {
+  background: #dde8ff;
+}
+
+/* Project/demo pages */
+[data-theme="light"] .project-page,
+[data-theme="light"] .project-demo-page {
+  background: #dde8ff;
+}
+
+/* Manifesto section sticker decorations — match dark rust filter */
+[data-theme="light"] [data-sticker="float-rev"] {
+  filter: drop-shadow(0 6px 20px rgba(212, 82, 30, 0.28));
+}
+
+[data-theme="light"] [data-sticker="float"] {
+  filter: drop-shadow(0 6px 20px rgba(29, 110, 245, 0.22));
+}
