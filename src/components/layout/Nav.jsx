@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import OpenToWorkPill from '../shared/OpenToWorkPill';
 import ThemeToggle from '../shared/ThemeToggle';
 import { useMagnetic } from '../../hooks/useMagnetic';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export default function Nav({ person, view, navigate }) {
   const [solid, setSolid] = useState(view !== 'home');
   const [open, setOpen] = useState(false);
-  const hireMagnetic = useMagnetic(true);
+  const reducedMotion = useReducedMotion();
+  const hireMagnetic = useMagnetic(!reducedMotion);
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 60 || view !== 'home');

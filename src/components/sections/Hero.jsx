@@ -1,11 +1,12 @@
 import DownloadCvButton from '../shared/DownloadCvButton';
-import Sticker from '../shared/Sticker';
+import Decoration from '../shared/Decoration';
 import { useReveal } from '../../hooks/useReveal';
 import { useCountUp } from '../../hooks/useCountUp';
 import { useMagnetic } from '../../hooks/useMagnetic';
 
 function CountStat({ stat, index, start }) {
   const value = useCountUp(stat.value, 1400, start, index * 200);
+
   return (
     <div>
       <span className="hs-num">{value}</span>
@@ -14,7 +15,7 @@ function CountStat({ stat, index, start }) {
   );
 }
 
-export default function Hero({ person, ticker, reducedMotion, stickers = [] }) {
+export default function Hero({ person, ticker, reducedMotion, decorations = [] }) {
   const headline = person.headline || [];
   const tickerItems = [...(ticker.items || []), ...(ticker.items || [])];
   const { ref: statsRef, visible: statsVisible } = useReveal({ disabled: reducedMotion });
@@ -22,7 +23,8 @@ export default function Hero({ person, ticker, reducedMotion, stickers = [] }) {
 
   return (
     <section id="hero">
-      {stickers.map((sticker) => <Sticker key={sticker.id} {...sticker} />)}
+      {decorations.map((decoration) => <Decoration key={decoration.id} {...decoration} />)}
+
       <div className="ring-wrap" aria-hidden="true">
         <svg className={`ring-text ${reducedMotion ? 'ring-still' : ''}`} viewBox="0 0 200 200">
           <defs>
@@ -49,30 +51,14 @@ export default function Hero({ person, ticker, reducedMotion, stickers = [] }) {
             ))}
           </div>
           <div className="hero-cta-group">
-            <div className="magnetic-wrap" onMouseMove={heroButtonMagnetic.onMouseMove} onMouseLeave={heroButtonMagnetic.onMouseLeave} style={heroButtonMagnetic.style}>
+            <div
+              className="magnetic-wrap"
+              onMouseMove={heroButtonMagnetic.onMouseMove}
+              onMouseLeave={heroButtonMagnetic.onMouseLeave}
+              style={heroButtonMagnetic.style}
+            >
               <DownloadCvButton href={person.resumeUrl} />
             </div>
-            <a href="#work" className="hbtn-ghost">See my work</a>
-          </div>
-        </div>
-      </div>
-
-      <div className="ticker-wrap" aria-hidden={reducedMotion}>
-        <div className={`ticker-track ${reducedMotion ? 'ticker-still' : ''}`}>
-          {tickerItems.map((item, index) => (
-            <span className={`ticker-item ${index % 3 === 2 ? 'accent' : ''}`} key={`${item}-${index}`}>
-              {item}<span className="ticker-sep">x</span>
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-            ))}
-          </div>
-          <div className="hero-cta-group">
-            <DownloadCvButton href={person.resumeUrl} />
             <a href="#work" className="hbtn-ghost">See my work</a>
           </div>
         </div>

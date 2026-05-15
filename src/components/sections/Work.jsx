@@ -1,7 +1,59 @@
 import { useMemo, useState } from 'react';
 import RevealOnScroll from '../shared/RevealOnScroll';
+import Decoration from '../shared/Decoration';
 
-export default function Work({ projects, navigate, reducedMotion }) {
+function TiltCard({ project, index, navigate, reducedMotion }) {
+  const [tiltStyle, setTiltStyle] = useState({ transform: 'none' });
+
+  function handleMouseMove(event) {
+    if (reducedMotion) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width;
+    const py = (event.clientY - rect.top) / rect.height;
+    const rx = (0.5 - py) * 12;
+    const ry = (px - 0.5) * 12;
+    setTiltStyle({
+      transform: `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`,
+    });
+  }
+
+  function handleMouseLeave() {
+    setTiltStyle({ transform: 'none' });
+  }
+
+  return (
+    <RevealOnScroll as="article" className={`pc pc${(index % 6) + 1} tilt-card`} key={project.slug} disabled={reducedMotion}>
+      <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={tiltStyle} className="tilt-card-inner">
+        <img className="pc-image" src={project.image} alt="" loading="lazy" decoding="async" />
+        <div className="pc-content">
+          <div className="pc-num">
+            <span>{project.number}{index === 0 ? ' - Featured' : ''}</span>
+            <span className="pc-badge">{project.badge}</span>
+          </div>
+          <h3 className="pc-title">{project.title}</h3>
+          <div className="pc-impact">{project.impact}</div>
+          <p className="pc-desc">{project.summary}</p>
+          <div className="pc-stack">
+            {project.stack?.map((item) => <span className="pcs" key={item}>{item}</span>)}
+          </div>
+          <a
+            href={`/projects/${project.slug}`}
+            className="pc-link"
+            onClick={(event) => {
+              event.preventDefault();
+              navigate(`/projects/${project.slug}`);
+              window.scrollTo({ top: 0, behavior: 'auto' });
+            }}
+          >
+            Open project -&gt;
+          </a>
+        </div>
+      </div>
+    </RevealOnScroll>
+  );
+}
+
+export default function Work({ projects, navigate, reducedMotion, decorations = [] }) {
   const [activeTag, setActiveTag] = useState('All');
   const tagOptions = useMemo(() => {
     const tags = new Set();
@@ -16,6 +68,7 @@ export default function Work({ projects, navigate, reducedMotion }) {
 
   return (
     <section id="work">
+      {decorations.map((decoration) => <Decoration key={decoration.id} {...decoration} />)}
       <div className="work-header">
         <div>
           <div className="sec-label">Selected work</div>
@@ -36,32 +89,7 @@ export default function Work({ projects, navigate, reducedMotion }) {
       </div>
       <div className="proj-grid">
         {visibleProjects.map((project, index) => (
-          <RevealOnScroll as="article" className={`pc pc${(index % 6) + 1}`} key={project.slug} disabled={reducedMotion}>
-            <img className="pc-image" src={project.image} alt="" loading="lazy" decoding="async" />
-            <div className="pc-content">
-              <div className="pc-num">
-                <span>{project.number}{index === 0 ? ' - Featured' : ''}</span>
-                <span className="pc-badge">{project.badge}</span>
-              </div>
-              <h3 className="pc-title">{project.title}</h3>
-              <div className="pc-impact">{project.impact}</div>
-              <p className="pc-desc">{project.summary}</p>
-              <div className="pc-stack">
-                {project.stack?.map((item) => <span className="pcs" key={item}>{item}</span>)}
-              </div>
-              <a
-                href={`/projects/${project.slug}`}
-                className="pc-link"
-                onClick={(event) => {
-                  event.preventDefault();
-                  navigate(`/projects/${project.slug}`);
-                  window.scrollTo({ top: 0, behavior: 'auto' });
-                }}
-              >
-                Open project -&gt;
-              </a>
-            </div>
-          </RevealOnScroll>
+          <TiltCard key={project.slug} project={project} index={index} navigate={navigate} reducedMotion={reducedMotion} />
         ))}
       </div>
     </section>

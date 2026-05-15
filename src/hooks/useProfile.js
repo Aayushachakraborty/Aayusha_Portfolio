@@ -9,7 +9,7 @@ import experience from '../data/experience.json';
 import awards from '../data/awards.json';
 import video from '../data/video.json';
 import meta from '../data/meta.json';
-import stickers from '../data/stickers.json';
+import decorations from '../data/decorations.json';
 import { profileService } from '../services/profile.service';
 import { deepMerge } from '../utils/format';
 
@@ -24,7 +24,7 @@ const baselineProfile = {
   awards,
   video,
   meta,
-  stickers,
+  decorations,
 };
 
 export function useProfile() {

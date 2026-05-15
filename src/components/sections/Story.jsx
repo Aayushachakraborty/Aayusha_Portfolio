@@ -1,12 +1,32 @@
 import RevealOnScroll from '../shared/RevealOnScroll';
+import Decoration from '../shared/Decoration';
+import { useReveal } from '../../hooks/useReveal';
 
-export default function Story({ experience, reducedMotion }) {
+function StaggerLine({ words, startIndex, visible }) {
+  return words.map((word, index) => (
+    <span
+      key={`${word}-${index}`}
+      className={`stagger-word ${visible ? 'on' : ''}`}
+      style={{ transitionDelay: `${(startIndex + index) * 80}ms` }}
+    >
+      {word}&nbsp;
+    </span>
+  ));
+}
+
+export default function Story({ experience, reducedMotion, decorations = [] }) {
+  const { ref, visible } = useReveal({ disabled: reducedMotion });
+
   return (
     <section id="story" className="section">
+      {decorations.map((decoration) => <Decoration key={decoration.id} {...decoration} />)}
       <div className="sec-label">Story</div>
-      <RevealOnScroll as="p" className="story-intro" disabled={reducedMotion}>
-        I like roles where the model has to survive contact with the business. <strong>That is where the useful work starts.</strong>
-      </RevealOnScroll>
+      <p ref={ref} className={`story-intro rv ${visible ? 'on' : ''}`} data-stagger="true">
+        <StaggerLine words={['I', 'like', 'roles', 'where', 'the', 'model', 'has', 'to', 'survive', 'contact', 'with', 'the', 'business.']} startIndex={0} visible={visible} />
+        <strong>
+          <StaggerLine words={['That', 'is', 'where', 'the', 'useful', 'work', 'starts.']} startIndex={13} visible={visible} />
+        </strong>
+      </p>
       <div className="jobs">
         {experience.items?.map((job) => (
           <RevealOnScroll as="article" className="job" key={`${job.company}-${job.role}`} disabled={reducedMotion}>

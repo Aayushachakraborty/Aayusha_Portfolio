@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { contactService } from '../../services/contact.service';
 import CopyEmail from '../shared/CopyEmail';
 import DownloadCvButton from '../shared/DownloadCvButton';
+import Decoration from '../shared/Decoration';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function Contact({ person }) {
+export default function Contact({ person, decorations = [] }) {
   const [formValues, setFormValues] = useState({ name: '', email: '', message: '', company_url: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -69,6 +70,7 @@ export default function Contact({ person }) {
 
   return (
     <section id="contact">
+      {decorations.map((decoration) => <Decoration key={decoration.id} {...decoration} />)}
       <div className="contact-bg-text" aria-hidden="true">Hire<br />Me.</div>
       <div className="contact-pre rv on">Ready when you are</div>
       <h2 className="contact-head rv on">Let&apos;s<br /><em>build</em><br /><span className="out2">together.</span></h2>

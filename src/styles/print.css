@@ -5,6 +5,13 @@
     cursor: auto !important;
   }
 
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
   nav,
   footer,
   .cursor-dot,

@@ -1,8 +1,10 @@
 import RevealOnScroll from '../shared/RevealOnScroll';
+import Decoration from '../shared/Decoration';
 
-export default function Awards({ awards, reducedMotion }) {
+export default function Awards({ awards, reducedMotion, decorations = [] }) {
   return (
     <section id="awards" className="section">
+      {decorations.map((decoration) => <Decoration key={decoration.id} {...decoration} />)}
       <div className="sec-label">Awards</div>
       <div className="awards-grid">
         {awards.items?.map((award) => (
