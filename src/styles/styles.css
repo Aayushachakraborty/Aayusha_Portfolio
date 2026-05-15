@@ -1220,17 +1220,28 @@ nav.solid {
 }
 
 .contact-bg-text {
-  left: -8px;
-  top: -6px;
-  color: rgba(228, 233, 245, 0.028);
+  bottom: -40px;
+  left: auto;
+  right: -12px;
+  top: auto;
+  color: rgba(228, 233, 245, 0.03);
   font-family: var(--serif);
-  font-size: clamp(96px, 17vw, 220px);
+  font-size: clamp(80px, 14vw, 190px);
   font-weight: 900;
   letter-spacing: -0.06em;
   line-height: 1;
   pointer-events: none;
   position: absolute;
-  right: auto;
+  z-index: 0;
+}
+
+/* All contact text content must sit above the ghost bg-text */
+.contact-pre,
+.contact-head,
+.contact-sub,
+.contact-copy,
+.contact-form {
+  position: relative;
   z-index: 1;
 }
 
@@ -2978,33 +2989,7 @@ body.reduced-motion .sk-forecast {
   border-bottom: 1px solid rgba(228, 233, 245, 0.1);
 }
 
-/* Hero — bg now light via --bg, fix hardcoded rgba text colors */
-[data-theme="light"] .hero-tagline {
-  color: rgba(11, 13, 20, 0.65);
-  border-left-color: var(--rust);
-}
-
-[data-theme="light"] .hs-label {
-  color: rgba(11, 13, 20, 0.5);
-}
-
-[data-theme="light"] .outline {
-  -webkit-text-stroke: 2px rgba(11, 13, 20, 0.8);
-}
-
-[data-theme="light"] .ring-text {
-  fill: rgba(11, 13, 20, 0.08);
-}
-
-[data-theme="light"] .hbtn-ghost {
-  color: rgba(11, 13, 20, 0.55);
-  border-bottom-color: rgba(11, 13, 20, 0.2);
-}
-
-[data-theme="light"] .hbtn-ghost:hover {
-  color: var(--fg);
-  border-color: var(--fg);
-}
+/* Hero text overrides — see consolidated block at end of file */
 
 /* Ticker — becomes light band matching hero */
 [data-theme="light"] .ticker-wrap {
@@ -3045,15 +3030,94 @@ body.reduced-motion .sk-forecast {
 [data-theme="light"] .project-page .case-block,
 [data-theme="light"] .project-page .project-notes,
 [data-theme="light"] .project-page .demo-panel {
-  background: rgba(11, 13, 20, 0.05);
+  background: rgba(8, 14, 60, 0.05);
   color: var(--fg);
 }
 
 /* Theme toggle button itself */
 [data-theme="light"] .theme-toggle {
-  background: rgba(228, 233, 245, 0.12);
-  border-color: rgba(228, 233, 245, 0.25);
-  color: var(--paper);
+  background: rgba(8, 14, 60, 0.07);
+  border-color: rgba(8, 14, 60, 0.18);
+  color: var(--ink);
+}
+
+/* ── WORK section — cards have dark bg, section header is light ── */
+[data-theme="light"] #work .work-title,
+[data-theme="light"] #work .sec-label ~ * {
+  color: var(--fg);
+}
+
+/* Sine-wave decoration in work goes dark (it was --ink colored, fine) */
+[data-theme="light"] #work .sine-wave path {
+  stroke: rgba(8, 14, 60, 0.15);
+}
+
+/* Animated decorations in work stay subtle but visible in light mode */
+[data-theme="light"] #work [data-decoration][data-sticker] {
+  filter: drop-shadow(0 6px 18px rgba(21, 88, 232, 0.18));
+}
+
+/* ── MANIFESTO section text on light bg ── */
+[data-theme="light"] .manifesto-p {
+  color: rgba(8, 14, 60, 0.68);
+}
+
+[data-theme="light"] .form-intro {
+  border-bottom-color: rgba(8, 14, 60, 0.12);
+}
+
+/* ── SKILLS section — already uses --ink color ✓ ── */
+/* sk.lg light borders need to be darker on light bg */
+[data-theme="light"] .sk.lg {
+  border-color: rgba(8, 14, 60, 0.22);
+  border-left-color: var(--electric);
+}
+
+[data-theme="light"] .sk {
+  border-color: rgba(8, 14, 60, 0.18);
+}
+
+/* Video section copy on light bg */
+[data-theme="light"] .video-copy {
+  color: rgba(8, 14, 60, 0.65);
+}
+
+/* ── HERO section text overrides for new vivid light gradient ── */
+[data-theme="light"] .hero-tagline {
+  color: rgba(8, 14, 60, 0.62);
+  border-left-color: var(--rust);
+}
+
+[data-theme="light"] .hs-label {
+  color: rgba(8, 14, 60, 0.52);
+}
+
+[data-theme="light"] .hs-num {
+  color: var(--fg);
+}
+
+[data-theme="light"] .hero-stats {
+  border-left-color: rgba(8, 14, 60, 0.15);
+}
+
+/* outline stroke on hero in light mode */
+[data-theme="light"] .outline {
+  -webkit-text-stroke: 2px rgba(8, 14, 60, 0.75);
+}
+
+[data-theme="light"] .hbtn-ghost {
+  color: rgba(8, 14, 60, 0.55);
+  border-bottom-color: rgba(8, 14, 60, 0.22);
+}
+
+[data-theme="light"] .hbtn-ghost:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+/* Ring text on hero */
+[data-theme="light"] .ring-text {
+  fill: rgba(8, 14, 60, 0.1);
 }
 
 /* body::after noise — reduce on light mode */
@@ -3078,11 +3142,11 @@ body.reduced-motion .sk-forecast {
   background: #dde8ff;
 }
 
-/* Manifesto section sticker decorations — match dark rust filter */
-[data-theme="light"] [data-sticker="float-rev"] {
+/* Animated decoration filters in light mode */
+[data-theme="light"] [data-decoration][data-sticker="float-rev"] {
   filter: drop-shadow(0 6px 20px rgba(212, 82, 30, 0.28));
 }
 
-[data-theme="light"] [data-sticker="float"] {
+[data-theme="light"] [data-decoration][data-sticker="float"] {
   filter: drop-shadow(0 6px 20px rgba(29, 110, 245, 0.22));
 }

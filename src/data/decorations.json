@@ -47,6 +47,18 @@
       "opacity": 0.07
     },
     {
+      "id": "d9",
+      "section": "work",
+      "type": "supply-flow",
+      "top": "60px",
+      "left": "48px",
+      "width": "140px",
+      "height": "140px",
+      "color": "var(--electric)",
+      "opacity": 0.28,
+      "animate": "float-rev"
+    },
+    {
       "id": "d3",
       "section": "story",
       "type": "neural-pulse",
@@ -79,18 +91,6 @@
       "height": "60%",
       "color": "var(--electric)",
       "opacity": 0.05
-    },
-    {
-      "id": "d9",
-      "section": "contact",
-      "type": "supply-flow",
-      "top": "72px",
-      "right": "64px",
-      "width": "158px",
-      "height": "158px",
-      "color": "var(--electric)",
-      "opacity": 0.45,
-      "animate": "float-rev"
     },
     {
       "id": "d6",
