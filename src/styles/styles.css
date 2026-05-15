@@ -12,14 +12,19 @@
   --surface-md: rgba(228, 233, 245, 0.08);
   --border: rgba(228, 233, 245, 0.1);
   --border-md: rgba(228, 233, 245, 0.18);
+  /* Semantic bg/fg — the ONLY vars that change for dark↔light */
+  --bg: #0b0d14;
+  --fg: #e4e9f5;
+  --bg2: #0f1320;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Barlow', sans-serif;
   --cond: 'Barlow Condensed', sans-serif;
 }
 
 [data-theme="light"] {
+  /* --ink/--paper stay the same — dark sections keep dark bg + light text */
   --ink: #0b0d14;
-  --paper: #f5f7ff;
+  --paper: #e4e9f5;
   --paper2: #eceffe;
   --rust: #d4521e;
   --rust2: #f06424;
@@ -31,6 +36,10 @@
   --surface-md: rgba(11, 13, 20, 0.07);
   --border: rgba(11, 13, 20, 0.1);
   --border-md: rgba(11, 13, 20, 0.18);
+  /* THE ACTUAL FIX: semantic vars that drive body/hero backgrounds */
+  --bg: #f5f7ff;
+  --fg: #0b0d14;
+  --bg2: #eef0ff;
 }
 
 *,
@@ -52,8 +61,8 @@ body {
 }
 
 body {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--bg);
+  color: var(--fg);
   cursor: none;
   font-family: var(--sans);
 }
@@ -154,7 +163,7 @@ body::after {
 }
 
 .cursor-ring {
-  border: 1.5px solid rgba(201, 74, 26, 0.55);
+  border: 1.5px solid rgba(212, 82, 30, 0.55);
   border-radius: 50%;
   height: 36px;
   width: 36px;
@@ -175,7 +184,7 @@ nav {
 
 nav.solid {
   background: var(--ink);
-  border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.08);
   padding: 18px 48px;
 }
 
@@ -211,12 +220,12 @@ nav.solid {
 }
 
 .link-reset {
-  color: rgba(245, 240, 232, 0.5);
+  color: rgba(228, 233, 245, 0.5);
 }
 
 .nlink,
 .link-reset {
-  color: rgba(245, 240, 232, 0.5);
+  color: rgba(228, 233, 245, 0.5);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -245,8 +254,8 @@ nav.solid {
 }
 
 .button-ghost {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.2);
-  color: rgba(245, 240, 232, 0.55);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.2);
+  color: rgba(228, 233, 245, 0.55);
   clip-path: none;
   padding: 0 0 2px;
   background: none;
@@ -317,7 +326,7 @@ nav.solid {
 
 .menu-btn {
   background: transparent;
-  border: 1px solid rgba(245, 240, 232, 0.2);
+  border: 1px solid rgba(228, 233, 245, 0.2);
   color: var(--paper);
   display: none;
   padding: 8px 14px;
@@ -344,7 +353,7 @@ nav.solid {
 
 .ring-text {
   animation: spin 22s linear infinite;
-  fill: rgba(245, 240, 232, 0.18);
+  fill: rgba(228, 233, 245, 0.18);
   font-family: var(--cond);
   font-size: 12px;
   font-weight: 700;
@@ -416,7 +425,7 @@ nav.solid {
 
 .hero-tagline {
   border-left: 3px solid var(--rust);
-  color: rgba(245, 240, 232, 0.76);
+  color: rgba(228, 233, 245, 0.76);
   font-size: clamp(16px, 1.55vw, 20px);
   font-style: italic;
   font-weight: 300;
@@ -450,7 +459,7 @@ nav.solid {
 }
 
 .hs-label {
-  color: rgba(245, 240, 232, 0.5);
+  color: rgba(228, 233, 245, 0.5);
   display: block;
   font-family: var(--cond);
   font-size: 11px;
@@ -476,8 +485,8 @@ nav.solid {
 }
 
 .hbtn-ghost {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.2);
-  color: rgba(245, 240, 232, 0.55);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.2);
+  color: rgba(228, 233, 245, 0.55);
   font-family: var(--cond);
   font-size: 13px;
   font-weight: 700;
@@ -494,8 +503,8 @@ nav.solid {
 
 .ticker-wrap {
   background: var(--ink);
-  border-bottom: 1px solid rgba(245, 240, 232, 0.1);
-  border-top: 1px solid rgba(245, 240, 232, 0.1);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.1);
+  border-top: 1px solid rgba(228, 233, 245, 0.1);
   overflow: hidden;
   padding: 14px 0;
   position: relative;
@@ -513,7 +522,7 @@ nav.solid {
 }
 
 .ticker-item {
-  color: rgba(245, 240, 232, 0.35);
+  color: rgba(228, 233, 245, 0.35);
   font-family: var(--cond);
   font-size: 13px;
   font-weight: 700;
@@ -597,7 +606,7 @@ nav.solid {
 }
 
 .manifesto-p {
-  color: rgba(14, 12, 10, 0.72);
+  color: rgba(11, 13, 20, 0.72);
   font-size: 17px;
   font-weight: 300;
   line-height: 1.85;
@@ -614,7 +623,8 @@ nav.solid {
 }
 
 .num-item {
-  border-right: 1px solid rgba(245, 240, 232, 0.22);
+  border-right: 1px solid rgba(228, 233, 245, 0.22);
+  overflow: hidden;
   min-width: 0;
   padding: 20px;
   text-align: center;
@@ -622,6 +632,12 @@ nav.solid {
 
 .num-item:last-child {
   border-right: none;
+}
+
+.num-item:first-child {
+  padding-left: 10px;
+  padding-right: 12px;
+  text-align: left;
 }
 
 .num-big {
@@ -634,8 +650,17 @@ nav.solid {
   white-space: nowrap;
 }
 
+.num-item:first-child .num-big {
+  font-size: clamp(30px, 3.5vw, 64px);
+  letter-spacing: -0.04em;
+}
+
+.num-item:first-child .num-desc {
+  padding-left: 2px;
+}
+
 .num-desc {
-  color: rgba(245, 240, 232, 0.68);
+  color: rgba(228, 233, 245, 0.68);
   display: block;
   font-family: var(--cond);
   font-size: 12px;
@@ -654,7 +679,7 @@ nav.solid {
 }
 
 .story-intro {
-  color: rgba(245, 240, 232, 0.9);
+  color: rgba(228, 233, 245, 0.9);
   font-family: var(--serif);
   font-size: clamp(32px, 4vw, 52px);
   font-style: italic;
@@ -675,7 +700,7 @@ nav.solid {
 }
 
 .job {
-  border-top: 1px solid rgba(245, 240, 232, 0.08);
+  border-top: 1px solid rgba(228, 233, 245, 0.08);
   display: grid;
   gap: 0;
   grid-template-columns: 180px 60px 1fr;
@@ -683,7 +708,7 @@ nav.solid {
 }
 
 .job:last-child {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.08);
 }
 
 .job-year {
@@ -753,7 +778,7 @@ nav.solid {
 }
 
 .job-desc {
-  color: rgba(245, 240, 232, 0.62);
+  color: rgba(228, 233, 245, 0.62);
   font-size: 15px;
   font-weight: 300;
   line-height: 1.8;
@@ -776,8 +801,8 @@ nav.solid {
 
 .jtag,
 .pcs {
-  border: 1px solid rgba(245, 240, 232, 0.12);
-  color: rgba(245, 240, 232, 0.45);
+  border: 1px solid rgba(228, 233, 245, 0.12);
+  color: rgba(228, 233, 245, 0.45);
   font-family: var(--cond);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -807,8 +832,8 @@ nav.solid {
 }
 
 .filter-chip {
-  border: 1px solid rgba(14, 12, 10, 0.18);
-  color: rgba(14, 12, 10, 0.62);
+  border: 1px solid rgba(11, 13, 20, 0.18);
+  color: rgba(11, 13, 20, 0.62);
   font-family: var(--cond);
   font-size: 12px;
   font-weight: 700;
@@ -899,7 +924,7 @@ nav.solid {
 
 .pc-num {
   align-items: center;
-  color: rgba(245, 240, 232, 0.3);
+  color: rgba(228, 233, 245, 0.3);
   display: flex;
   font-family: var(--cond);
   font-size: 11px;
@@ -915,7 +940,7 @@ nav.solid {
 }
 
 .pc-badge {
-  background: rgba(201, 74, 26, 0.15);
+  background: rgba(212, 82, 30, 0.15);
   color: var(--rust);
   font-size: 10px;
   font-weight: 700;
@@ -943,7 +968,7 @@ nav.solid {
 }
 
 .pc-desc {
-  color: rgba(245, 240, 232, 0.58);
+  color: rgba(228, 233, 245, 0.58);
   font-size: 13px;
   font-weight: 300;
   line-height: 1.7;
@@ -956,7 +981,7 @@ nav.solid {
 }
 
 .pc-link {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.2);
   color: var(--paper);
   font-family: var(--cond);
   font-size: 12px;
@@ -974,8 +999,8 @@ nav.solid {
 }
 
 .awards-grid {
-  background: rgba(245, 240, 232, 0.08);
-  border: 1px solid rgba(245, 240, 232, 0.08);
+  background: rgba(228, 233, 245, 0.08);
+  border: 1px solid rgba(228, 233, 245, 0.08);
   display: grid;
   gap: 1px;
   grid-template-columns: repeat(3, 1fr);
@@ -1008,7 +1033,7 @@ nav.solid {
 }
 
 .award-desc {
-  color: rgba(245, 240, 232, 0.5);
+  color: rgba(228, 233, 245, 0.5);
   font-size: 14px;
   font-weight: 300;
   line-height: 1.7;
@@ -1034,7 +1059,7 @@ nav.solid {
 }
 
 .sk {
-  border: 1.5px solid rgba(14, 12, 10, 0.2);
+  border: 1.5px solid rgba(11, 13, 20, 0.2);
   color: var(--ink);
   font-family: var(--cond);
   font-weight: 700;
@@ -1044,6 +1069,13 @@ nav.solid {
   position: relative;
   text-transform: uppercase;
   transition: all 0.25s;
+}
+
+.sk.lg {
+  border-bottom: 1.5px solid rgba(228, 233, 245, 0.2);
+  border-left: 3px solid var(--electric);
+  border-right: 1.5px solid rgba(228, 233, 245, 0.2);
+  border-top: 1.5px solid rgba(228, 233, 245, 0.2);
 }
 
 .sk::after {
@@ -1056,6 +1088,18 @@ nav.solid {
 }
 
 .sk:hover {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: var(--paper);
+}
+
+.sk.lg:hover {
+  background: var(--electric);
+  border-color: var(--electric);
+  color: var(--ink);
+}
+
+.sk.md:hover {
   background: var(--rust);
   border-color: var(--rust);
   color: var(--paper);
@@ -1087,7 +1131,7 @@ nav.solid {
 }
 
 .video-copy {
-  color: rgba(14, 12, 10, 0.68);
+  color: rgba(11, 13, 20, 0.68);
   font-size: 18px;
   font-style: italic;
   font-weight: 300;
@@ -1096,14 +1140,14 @@ nav.solid {
 
 .video-frame {
   aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, rgba(201, 74, 26, 0.35), rgba(14, 12, 10, 0.92)), radial-gradient(circle at 30% 30%, rgba(245, 240, 232, 0.18), transparent 35%);
+  background: linear-gradient(135deg, rgba(212, 82, 30, 0.35), rgba(11, 13, 20, 0.92)), radial-gradient(circle at 30% 30%, rgba(228, 233, 245, 0.18), transparent 35%);
   min-height: 320px;
   overflow: hidden;
   position: relative;
 }
 
 .video-thumb {
-  background-image: linear-gradient(90deg, rgba(245, 240, 232, 0.05) 1px, transparent 1px), linear-gradient(rgba(245, 240, 232, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(90deg, rgba(228, 233, 245, 0.05) 1px, transparent 1px), linear-gradient(rgba(228, 233, 245, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   inset: 0;
   position: absolute;
@@ -1122,7 +1166,7 @@ nav.solid {
 
 .play-btn {
   align-items: center;
-  border: 1px solid rgba(245, 240, 232, 0.42);
+  border: 1px solid rgba(228, 233, 245, 0.42);
   border-radius: 50%;
   display: flex;
   height: 82px;
@@ -1164,67 +1208,74 @@ nav.solid {
 
 .vc-tip {
   border-left: 2px solid var(--rust);
-  color: rgba(14, 12, 10, 0.62);
+  color: rgba(11, 13, 20, 0.62);
   padding-left: 12px;
 }
 
 #contact {
-  min-height: 80vh;
+  background: linear-gradient(135deg, #0b0d14 0%, #091624 60%, #0b0d14 100%);
+  min-height: auto;
   overflow: hidden;
 }
 
 .contact-bg-text {
-  bottom: -40px;
-  color: rgba(245, 240, 232, 0.035);
+  bottom: -16px;
+  color: rgba(228, 233, 245, 0.028);
   font-family: var(--serif);
-  font-size: clamp(120px, 20vw, 280px);
+  font-size: clamp(96px, 17vw, 220px);
   font-weight: 900;
   letter-spacing: -0.06em;
   line-height: 1;
   pointer-events: none;
   position: absolute;
-  right: -20px;
+  right: -8px;
+}
+
+.contact-pre {
+  margin-bottom: 14px;
 }
 
 .contact-head {
   font-size: clamp(48px, 9vw, 130px);
-  margin-bottom: 40px;
+  line-height: 0.9;
+  margin-bottom: 24px;
+  max-width: 8ch;
 }
 
 .contact-head .out2 {
-  -webkit-text-stroke: 2px rgba(245, 240, 232, 0.3);
+  -webkit-text-stroke: 2px rgba(228, 233, 245, 0.3);
   color: transparent;
 }
 
 .contact-sub {
-  color: rgba(245, 240, 232, 0.55);
+  color: rgba(228, 233, 245, 0.55);
   font-size: 18px;
   font-style: italic;
   font-weight: 300;
   line-height: 1.7;
-  margin-bottom: 48px;
-  max-width: 520px;
+  margin-bottom: 32px;
+  max-width: 620px;
 }
 
 .contact-grid {
   align-items: start;
   display: grid;
-  gap: 38px;
-  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 0.6fr);
+  gap: 28px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   position: relative;
   z-index: 2;
 }
 
 .contact-copy {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   align-content: start;
 }
 
 .contact-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 22px 24px;
+  padding: 20px 22px;
 }
 
 .contact-card-label {
@@ -1243,6 +1294,7 @@ nav.solid {
   display: flex;
   flex-wrap: wrap;
   gap: 16px 24px;
+  margin-top: 2px;
 }
 
 .contact-actions {
@@ -1253,7 +1305,7 @@ nav.solid {
 }
 
 .contact-email {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.3);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.3);
   color: var(--paper);
   font-family: var(--serif);
   font-size: clamp(18px, 2.5vw, 28px);
@@ -1264,7 +1316,7 @@ nav.solid {
 }
 
 .contact-note {
-  color: rgba(245, 240, 232, 0.68);
+  color: rgba(228, 233, 245, 0.68);
   font-size: 15px;
   font-weight: 300;
   line-height: 1.75;
@@ -1277,7 +1329,7 @@ nav.solid {
 
 .soc,
 .copy-btn {
-  color: rgba(245, 240, 232, 0.56);
+  color: rgba(228, 233, 245, 0.56);
   font-family: var(--cond);
   font-size: 12px;
   font-weight: 700;
@@ -1306,22 +1358,28 @@ nav.solid {
   color: var(--rust);
 }
 
+.contact-email:hover {
+  border-bottom-color: var(--electric);
+  color: var(--electric);
+}
+
 .contact-form {
   background: var(--surface);
   border: 1px solid var(--border);
+  align-content: start;
   display: grid;
   gap: 14px;
   padding: 28px;
 }
 
 .form-intro {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.1);
   margin-bottom: 4px;
   padding-bottom: 16px;
 }
 
 .form-title {
-  color: rgba(245, 240, 232, 0.74);
+  color: rgba(228, 233, 245, 0.74);
   font-size: 15px;
   font-weight: 300;
   line-height: 1.7;
@@ -1333,7 +1391,7 @@ nav.solid {
 }
 
 .contact-form label {
-  color: rgba(245, 240, 232, 0.85);
+  color: rgba(228, 233, 245, 0.85);
   display: grid;
   font-family: var(--cond);
   font-size: 12px;
@@ -1345,7 +1403,7 @@ nav.solid {
 
 .contact-form input,
 .contact-form textarea {
-  background: rgba(245, 240, 232, 0.94);
+  background: rgba(228, 233, 245, 0.94);
   border: 1px solid transparent;
   color: var(--ink);
   font: 400 16px var(--sans);
@@ -1356,7 +1414,7 @@ nav.solid {
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--rust);
-  outline: 3px solid rgba(201, 74, 26, 0.18);
+  outline: 3px solid rgba(212, 82, 30, 0.18);
 }
 
 .contact-form textarea {
@@ -1373,7 +1431,7 @@ nav.solid {
 }
 
 .form-meta {
-  color: rgba(245, 240, 232, 0.5);
+  color: rgba(228, 233, 245, 0.5);
   font-family: var(--cond);
   font-size: 11px;
   font-weight: 700;
@@ -1383,7 +1441,7 @@ nav.solid {
 
 .field-error,
 .form-status {
-  color: rgba(245, 240, 232, 0.65);
+  color: rgba(228, 233, 245, 0.65);
   min-height: 18px;
   font-family: var(--cond);
   font-size: 11px;
@@ -1411,8 +1469,8 @@ nav.solid {
 }
 
 footer {
-  border-top: 1px solid rgba(245, 240, 232, 0.07);
-  color: rgba(245, 240, 232, 0.38);
+  border-top: 1px solid rgba(228, 233, 245, 0.07);
+  color: rgba(228, 233, 245, 0.38);
   display: flex;
   font-family: var(--cond);
   font-size: 12px;
@@ -1447,8 +1505,8 @@ footer {
 }
 
 .back-link {
-  border-bottom: 1px solid rgba(14, 12, 10, 0.25);
-  color: rgba(14, 12, 10, 0.62);
+  border-bottom: 1px solid rgba(11, 13, 20, 0.25);
+  color: rgba(11, 13, 20, 0.62);
   display: inline-flex;
   font-family: var(--cond);
   font-size: 13px;
@@ -1484,7 +1542,7 @@ footer {
 }
 
 .project-hero p {
-  color: rgba(14, 12, 10, 0.68);
+  color: rgba(11, 13, 20, 0.68);
   font-size: 19px;
   font-style: italic;
   font-weight: 300;
@@ -1501,8 +1559,8 @@ footer {
 }
 
 .project-impact {
-  background: rgba(201, 74, 26, 0.1);
-  border: 1px solid rgba(201, 74, 26, 0.22);
+  background: rgba(212, 82, 30, 0.1);
+  border: 1px solid rgba(212, 82, 30, 0.22);
   color: var(--rust);
   display: inline-flex;
   font-family: var(--cond);
@@ -1514,7 +1572,7 @@ footer {
 }
 
 .read-time {
-  color: rgba(14, 12, 10, 0.58);
+  color: rgba(11, 13, 20, 0.58);
   font-family: var(--cond);
   font-size: 12px;
   font-weight: 700;
@@ -1550,7 +1608,7 @@ footer {
 }
 
 .project-demo-head p {
-  color: rgba(14, 12, 10, 0.7);
+  color: rgba(11, 13, 20, 0.7);
   font-size: 18px;
   font-style: italic;
   font-weight: 300;
@@ -1595,7 +1653,7 @@ footer {
 .case-block p,
 .project-notes p,
 .demo-panel p {
-  color: rgba(14, 12, 10, 0.72);
+  color: rgba(11, 13, 20, 0.72);
   font-size: 15px;
   font-weight: 300;
   line-height: 1.8;
@@ -1611,7 +1669,7 @@ footer {
   position: relative;
   min-height: 520px;
   overflow: hidden;
-  border: 1px solid rgba(245, 240, 232, 0.1);
+  border: 1px solid rgba(228, 233, 245, 0.1);
   background: var(--ink);
 }
 
@@ -1636,7 +1694,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   padding: 28px;
-  background: linear-gradient(180deg, rgba(14, 12, 10, 0.78) 0%, rgba(14, 12, 10, 0.22) 36%, rgba(14, 12, 10, 0.84) 100%);
+  background: linear-gradient(180deg, rgba(11, 13, 20, 0.78) 0%, rgba(11, 13, 20, 0.22) 36%, rgba(11, 13, 20, 0.84) 100%);
 }
 
 .demo-teaser-copy {
@@ -1664,7 +1722,7 @@ footer {
 }
 
 .demo-teaser-copy p {
-  color: rgba(245, 240, 232, 0.72);
+  color: rgba(228, 233, 245, 0.72);
   font-size: 15px;
   font-weight: 300;
   line-height: 1.7;
@@ -1679,12 +1737,17 @@ footer {
 
 .project-notes p,
 .demo-panel p {
-  color: rgba(245, 240, 232, 0.62);
+  color: rgba(228, 233, 245, 0.62);
   margin-bottom: 14px;
 }
 
 .external-link {
+  color: var(--electric);
   margin-top: 14px;
+}
+
+.external-link:hover {
+  color: var(--electric2);
 }
 
 .demo-panel {
@@ -1697,12 +1760,12 @@ footer {
 }
 
 .demo-intro {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.09);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.09);
   padding-bottom: 18px;
 }
 
 .demo-panel label {
-  color: rgba(245, 240, 232, 0.74);
+  color: rgba(228, 233, 245, 0.74);
   display: grid;
   font-family: var(--cond);
   font-size: 12px;
@@ -1731,14 +1794,14 @@ footer {
 }
 
 .demo-metric {
-  background: rgba(245, 240, 232, 0.06);
-  border: 1px solid rgba(245, 240, 232, 0.09);
+  background: rgba(228, 233, 245, 0.06);
+  border: 1px solid rgba(228, 233, 245, 0.09);
   min-height: 112px;
   padding: 18px;
 }
 
 .demo-metric span {
-  color: rgba(245, 240, 232, 0.42);
+  color: rgba(228, 233, 245, 0.42);
   display: block;
   font-family: var(--cond);
   font-size: 11px;
@@ -1776,8 +1839,8 @@ footer {
 
 .pipeline-step {
   align-items: center;
-  background: rgba(245, 240, 232, 0.06);
-  border: 1px solid rgba(245, 240, 232, 0.09);
+  background: rgba(228, 233, 245, 0.06);
+  border: 1px solid rgba(228, 233, 245, 0.09);
   display: flex;
   gap: 16px;
   padding: 14px;
@@ -1791,7 +1854,7 @@ footer {
 }
 
 .pipeline-step strong {
-  color: rgba(245, 240, 232, 0.82);
+  color: rgba(228, 233, 245, 0.82);
   font-weight: 500;
 }
 
@@ -1802,7 +1865,7 @@ footer {
 }
 
 .model-table {
-  border: 1px solid rgba(245, 240, 232, 0.1);
+  border: 1px solid rgba(228, 233, 245, 0.1);
   display: grid;
   overflow: hidden;
 }
@@ -1813,13 +1876,13 @@ footer {
 }
 
 .model-table-head {
-  background: rgba(201, 74, 26, 0.14);
+  background: rgba(212, 82, 30, 0.14);
 }
 
 .model-table-head span,
 .model-table-row span {
-  border-right: 1px solid rgba(245, 240, 232, 0.08);
-  color: rgba(245, 240, 232, 0.7);
+  border-right: 1px solid rgba(228, 233, 245, 0.08);
+  color: rgba(228, 233, 245, 0.7);
   font-size: 12px;
   min-width: 0;
   overflow-wrap: anywhere;
@@ -1835,7 +1898,7 @@ footer {
 }
 
 .model-table-row {
-  border-top: 1px solid rgba(245, 240, 232, 0.08);
+  border-top: 1px solid rgba(228, 233, 245, 0.08);
 }
 
 .model-table-row span {
@@ -1843,8 +1906,8 @@ footer {
 }
 
 .driver-stack {
-  background: rgba(245, 240, 232, 0.05);
-  border: 1px solid rgba(245, 240, 232, 0.09);
+  background: rgba(228, 233, 245, 0.05);
+  border: 1px solid rgba(228, 233, 245, 0.09);
   display: grid;
   gap: 16px;
   padding: 18px;
@@ -1872,7 +1935,7 @@ footer {
 }
 
 .driver-bar span {
-  color: rgba(245, 240, 232, 0.56);
+  color: rgba(228, 233, 245, 0.56);
 }
 
 .driver-bar strong {
@@ -1880,7 +1943,7 @@ footer {
 }
 
 .bar-track {
-  background: rgba(245, 240, 232, 0.08);
+  background: rgba(228, 233, 245, 0.08);
   height: 8px;
   overflow: hidden;
 }
@@ -2042,7 +2105,7 @@ body.reduced-motion .rv {
 
   .nright {
     background: var(--ink);
-    border-top: 1px solid rgba(245, 240, 232, 0.1);
+    border-top: 1px solid rgba(228, 233, 245, 0.1);
     display: none;
     flex-basis: 100%;
     flex-direction: column;
@@ -2122,7 +2185,7 @@ body.reduced-motion .rv {
   }
 
   .num-item {
-    border-bottom: 1px solid rgba(245, 240, 232, 0.22);
+    border-bottom: 1px solid rgba(228, 233, 245, 0.22);
   }
 
   .job {
@@ -2154,7 +2217,8 @@ body.reduced-motion .rv {
 }
 
 @media (max-width: 768px) {
-  .sticker {
+  .sticker,
+  [data-decoration] {
     display: none;
   }
 }
@@ -2231,6 +2295,26 @@ nav.solid {
 .project-hero > *,
 .project-body > * {
   min-width: 0;
+}
+
+#work .work-header,
+#work .filter-row,
+#work .proj-grid,
+#story .sec-label,
+#story .story-intro,
+#story .jobs,
+#awards .sec-label,
+#awards .awards-grid,
+#skills .sec-label,
+#skills .skills-title,
+#skills .skill-cloud,
+#contact .contact-bg-text,
+#contact .contact-pre,
+#contact .contact-head,
+#contact .contact-sub,
+#contact .contact-grid {
+  position: relative;
+  z-index: 2;
 }
 
 @media (hover: hover) {
@@ -2372,7 +2456,7 @@ nav.solid {
 
   .nright.open {
     background: var(--ink);
-    border-top: 1px solid rgba(245, 240, 232, 0.1);
+    border-top: 1px solid rgba(228, 233, 245, 0.1);
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -2552,6 +2636,15 @@ nav.solid {
     gap: 10px;
   }
 
+  .contact-head {
+    margin-bottom: 18px;
+    max-width: none;
+  }
+
+  .contact-sub {
+    margin-bottom: 24px;
+  }
+
   .filter-chip {
     min-height: 40px;
     padding: 10px 16px;
@@ -2708,7 +2801,7 @@ nav.solid {
 
   .num-item {
     border-right: none;
-    border-bottom: 1px solid rgba(245, 240, 232, 0.22);
+    border-bottom: 1px solid rgba(228, 233, 245, 0.22);
   }
 
   .num-item:last-child {
@@ -2742,3 +2835,112 @@ nav.solid {
     padding-right: 16px;
   }
 }
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   Strategy: body/hero become light. Dark sections (story,
+   awards, contact) keep their dark bg — premium contrast.
+   ============================================================ */
+
+/* Nav — always has dark background in light mode so text is readable */
+[data-theme="light"] nav,
+[data-theme="light"] nav.solid {
+  background: var(--ink);
+  border-bottom: 1px solid rgba(228, 233, 245, 0.1);
+}
+
+/* Hero — bg now light via --bg, fix hardcoded rgba text colors */
+[data-theme="light"] .hero-tagline {
+  color: rgba(11, 13, 20, 0.65);
+  border-left-color: var(--rust);
+}
+
+[data-theme="light"] .hs-label {
+  color: rgba(11, 13, 20, 0.5);
+}
+
+[data-theme="light"] .outline {
+  -webkit-text-stroke: 2px rgba(11, 13, 20, 0.8);
+}
+
+[data-theme="light"] .ring-text {
+  fill: rgba(11, 13, 20, 0.08);
+}
+
+[data-theme="light"] .hbtn-ghost {
+  color: rgba(11, 13, 20, 0.55);
+  border-bottom-color: rgba(11, 13, 20, 0.2);
+}
+
+[data-theme="light"] .hbtn-ghost:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+/* Ticker — becomes light band matching hero */
+[data-theme="light"] .ticker-wrap {
+  background: var(--bg2);
+  border-top-color: rgba(11, 13, 20, 0.1);
+  border-bottom-color: rgba(11, 13, 20, 0.1);
+}
+
+[data-theme="light"] .ticker-item {
+  color: rgba(11, 13, 20, 0.42);
+}
+
+[data-theme="light"] .ticker-item.accent,
+[data-theme="light"] .ticker-sep {
+  color: var(--rust);
+}
+
+/* Manifesto + Work — use --paper (light) already, just ensure text correct */
+[data-theme="light"] #manifesto,
+[data-theme="light"] #work {
+  background: #ffffff;
+  color: var(--fg);
+}
+
+/* Numbers bar — keeps rust/navy gradient, unaffected */
+
+/* Story, Awards, Contact — intentionally STAY dark for premium contrast */
+[data-theme="light"] #story,
+[data-theme="light"] #awards,
+[data-theme="light"] #contact {
+  background: var(--ink);
+}
+
+/* Skills + project pages — already use paper2 which changes ✓ */
+[data-theme="light"] #skills,
+[data-theme="light"] #videocv,
+[data-theme="light"] .project-page,
+[data-theme="light"] .project-demo-page {
+  background: var(--paper2);
+  color: var(--fg);
+}
+
+/* Project cards, demo panels — in dark sections they stay dark ✓ */
+/* In project page (light bg), these need lighter surface */
+[data-theme="light"] .project-page .case-block,
+[data-theme="light"] .project-page .project-notes,
+[data-theme="light"] .project-page .demo-panel {
+  background: rgba(11, 13, 20, 0.05);
+  color: var(--fg);
+}
+
+/* Theme toggle button itself */
+[data-theme="light"] .theme-toggle {
+  background: rgba(228, 233, 245, 0.12);
+  border-color: rgba(228, 233, 245, 0.25);
+  color: var(--paper);
+}
+
+/* body::after noise — reduce on light mode */
+[data-theme="light"] body::after {
+  opacity: 0.015;
+}
+
+/* Gradient hero bg in light mode */
+[data-theme="light"] #hero {
+  background: linear-gradient(160deg, #f5f7ff 0%, #eef0ff 55%, #f5f7ff 100%);
+}
+
