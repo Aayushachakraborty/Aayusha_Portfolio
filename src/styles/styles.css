@@ -3192,3 +3192,89 @@ body.reduced-motion .sk-forecast {
 [data-theme="light"] [data-decoration][data-sticker="float"] {
   filter: drop-shadow(0 6px 20px rgba(29, 110, 245, 0.22));
 }
+
+/* ============================================================
+   LIGHT MODE — PROJECT CARDS
+   Replace dark card backgrounds with palette-matched light tints.
+   Each card gets a unique hue from the brand palette.
+   ============================================================ */
+
+[data-theme="light"] .pc {
+  background: #eaf2ff;
+  border: 1px solid rgba(8, 14, 60, 0.1);
+  color: var(--ink);
+}
+
+/* Per-card tints — each from a brand palette hue family */
+[data-theme="light"] .pc2 { background: #fdeee8; border-color: rgba(201, 74, 24, 0.12); }
+[data-theme="light"] .pc3 { background: #e0eeff; border-color: rgba(21, 88, 232, 0.12); }
+[data-theme="light"] .pc4 { background: #fdf6e0; border-color: rgba(200, 140, 16, 0.14); }
+[data-theme="light"] .pc5 { background: #e0f8ef; border-color: rgba(5, 150, 105, 0.14); }
+[data-theme="light"] .pc6 { background: #f0e8ff; border-color: rgba(120, 40, 220, 0.1); }
+
+/* Card text — all dark on light card backgrounds */
+[data-theme="light"] .pc-num {
+  color: rgba(8, 14, 60, 0.35);
+}
+
+[data-theme="light"] .pc-num span:first-child {
+  color: var(--electric);
+  opacity: 0.85;
+}
+
+[data-theme="light"] .pc-title {
+  color: var(--ink);
+}
+
+[data-theme="light"] .pc-desc {
+  color: rgba(8, 14, 60, 0.62);
+}
+
+[data-theme="light"] .pc-link {
+  border-bottom-color: rgba(8, 14, 60, 0.22);
+  color: var(--ink);
+}
+
+[data-theme="light"] .pc-link:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+/* Project images — slightly more opaque so they're visible on light card bg */
+[data-theme="light"] .pc-image {
+  opacity: 0.22;
+}
+
+/* ── SECTION SEC-LABEL in light work/manifesto ── */
+[data-theme="light"] #work .sec-label,
+[data-theme="light"] #manifesto .sec-label {
+  color: var(--rust);
+}
+
+/* ── WORK section heading ── */
+[data-theme="light"] .work-title {
+  color: var(--ink);
+}
+
+/* ── NUMBERS bar — stays dark, ensure electric border pops ── */
+[data-theme="light"] #numbers {
+  border-bottom-color: var(--electric);
+}
+
+/* ── MANIFESTO heading outline stroke ── */
+[data-theme="light"] .outline-dark {
+  -webkit-text-stroke: 2px rgba(8, 14, 60, 0.55);
+}
+
+/* ── PROJ CTA bar (if exists) ── */
+[data-theme="light"] .proj-cta {
+  color: var(--ink);
+  border-top-color: rgba(8, 14, 60, 0.1);
+}
+
+/* ── Global: any remaining --paper colored text in light sections ── */
+[data-theme="light"] #manifesto *,
+[data-theme="light"] #work .work-title,
+[data-theme="light"] #skills .skills-title {
+  color: inherit;
+}
