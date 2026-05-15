@@ -635,9 +635,8 @@ nav.solid {
 }
 
 .num-item:first-child {
-  padding-left: 10px;
-  padding-right: 12px;
-  text-align: left;
+  padding: 20px;
+  text-align: center;
 }
 
 .num-big {
@@ -651,12 +650,14 @@ nav.solid {
 }
 
 .num-item:first-child .num-big {
-  font-size: clamp(30px, 3.5vw, 64px);
-  letter-spacing: -0.04em;
+  font-size: clamp(22px, 2.4vw, 46px);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  white-space: normal;
 }
 
 .num-item:first-child .num-desc {
-  padding-left: 2px;
+  padding-left: 0;
 }
 
 .num-desc {
@@ -1216,6 +1217,7 @@ nav.solid {
   background: linear-gradient(135deg, #0b0d14 0%, #091624 60%, #0b0d14 100%);
   min-height: auto;
   overflow: hidden;
+  padding: 80px 48px 60px;
 }
 
 .contact-bg-text {
@@ -1236,9 +1238,9 @@ nav.solid {
 }
 
 .contact-head {
-  font-size: clamp(48px, 9vw, 130px);
+  font-size: clamp(42px, 7.5vw, 92px);
   line-height: 0.9;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   max-width: 8ch;
 }
 
@@ -1252,8 +1254,8 @@ nav.solid {
   font-size: 18px;
   font-style: italic;
   font-weight: 300;
-  line-height: 1.7;
-  margin-bottom: 32px;
+  line-height: 1.6;
+  margin-bottom: 24px;
   max-width: 620px;
 }
 
