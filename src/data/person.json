@@ -1,0 +1,21 @@
+{
+  "name": "Aayusha Chakraborty",
+  "brand": "A.Chakraborty",
+  "eyebrow": "Data Scientist · ML Engineer · Analytics Strategist",
+  "headline": ["I turn", "messy data", "into", "business outcomes."],
+  "summary": "Data Scientist with 4+ years building production ML systems for supply chain, demand forecasting, dynamic pricing, and marketing analytics across manufacturing and e-commerce.",
+  "location": "Greater Noida, India",
+  "email": "chakrabortyaayusha22@gmail.com",
+  "phone": "+91 81026 35950",
+  "linkedin": "https://www.linkedin.com/in/aayusha-chakraborty/",
+  "github": "https://github.com/Aayushachakraborty",
+  "resumeUrl": "/Aayusha_Chakraborty_Data_Scientist.pdf",
+  "availability": "Open to AI/ML, ML Engineer, Data Scientist, and Data Analyst roles",
+  "availabilityShort": "Open to Work",
+  "responseSla": "Replies within 24 hours",
+  "heroStats": [
+    { "value": "4+", "label": "Years in Production ML" },
+    { "value": "24+", "label": "National Comp Finals" },
+    { "value": "0.87", "label": "ROC-AUC, Disruption Model" }
+  ]
+}

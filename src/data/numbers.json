@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "value": "24% → 11%", "label": "Forecast MAPE Reduction" },
+    { "value": "18%", "label": "Inventory Cost Cut" },
+    { "value": "18%", "label": "GMV Lift via Dynamic Pricing" },
+    { "value": "0.87", "label": "ROC-AUC on Disruption Model" },
+    { "value": "25%", "label": "Ad-Spend Efficiency Gain" },
+    { "value": "60%", "label": "Weekly Reporting Saved" }
+  ]
+}

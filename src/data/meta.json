@@ -1,0 +1,18 @@
+{
+  "title": "Aayusha Chakraborty — Data Scientist · ML · Forecasting · Supply Chain Analytics",
+  "description": "4+ years building production ML for supply chain, forecasting, dynamic pricing, and marketing analytics. Top-5 finalist in 24+ national data science competitions.",
+  "ogImage": "/og-image.png",
+  "twitter": "",
+  "siteUrl": "https://aayushachakraborty.dev",
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aayusha Chakraborty",
+    "jobTitle": "Data Scientist",
+    "url": "https://aayushachakraborty.dev",
+    "sameAs": [
+      "https://www.linkedin.com/in/aayusha-chakraborty/",
+      "https://github.com/Aayushachakraborty"
+    ]
+  }
+}

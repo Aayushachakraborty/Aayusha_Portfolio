@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aayushachakraborty.dev/sitemap.xml

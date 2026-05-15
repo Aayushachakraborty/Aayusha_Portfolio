@@ -1,0 +1,65 @@
+{
+  "groups": [
+    {
+      "name": "Languages & Data",
+      "items": [
+        { "name": "Python", "scale": "lg" },
+        { "name": "SQL", "scale": "lg" },
+        { "name": "Pandas", "scale": "md" },
+        { "name": "NumPy", "scale": "sm" },
+        { "name": "PostgreSQL", "scale": "md" },
+        { "name": "MySQL", "scale": "sm" }
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "items": [
+        { "name": "XGBoost", "scale": "lg" },
+        { "name": "LightGBM", "scale": "lg" },
+        { "name": "Scikit-learn", "scale": "md" },
+        { "name": "Random Forest", "scale": "sm" },
+        { "name": "SHAP", "scale": "md" },
+        { "name": "Feature Engineering", "scale": "md" }
+      ]
+    },
+    {
+      "name": "Forecasting",
+      "items": [
+        { "name": "Prophet", "scale": "lg" },
+        { "name": "ARIMA / SARIMA", "scale": "md" },
+        { "name": "Holt-Winters", "scale": "sm" },
+        { "name": "Hierarchical Forecasting", "scale": "md" }
+      ]
+    },
+    {
+      "name": "Deep Learning & RL",
+      "items": [
+        { "name": "TensorFlow / Keras", "scale": "md" },
+        { "name": "RLlib (PPO)", "scale": "lg" },
+        { "name": "LSTM", "scale": "sm" },
+        { "name": "Mesa", "scale": "md" }
+      ]
+    },
+    {
+      "name": "MLOps & Cloud",
+      "items": [
+        { "name": "MLflow", "scale": "lg" },
+        { "name": "Docker", "scale": "md" },
+        { "name": "Airflow", "scale": "md" },
+        { "name": "Kedro", "scale": "sm" },
+        { "name": "AWS (EC2 · S3 · Lambda)", "scale": "md" },
+        { "name": "FastAPI", "scale": "lg" }
+      ]
+    },
+    {
+      "name": "Visualization & BI",
+      "items": [
+        { "name": "Power BI", "scale": "lg" },
+        { "name": "Tableau", "scale": "md" },
+        { "name": "Plotly", "scale": "sm" },
+        { "name": "Recharts", "scale": "md" },
+        { "name": "Matplotlib / Seaborn", "scale": "sm" }
+      ]
+    }
+  ]
+}

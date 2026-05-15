@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "rank": "Top 4",
+      "name": "DecodeX 2024",
+      "description": "End-to-end ML pipeline with 650-variable feature selection, XGBoost, and SHAP for loan approval — +9 points accuracy gain."
+    },
+    {
+      "rank": "3rd",
+      "name": "Renaissance 2024",
+      "description": "Predictive + optimization framework for municipal budget allocation."
+    },
+    {
+      "rank": "24+",
+      "name": "National Competition Finals",
+      "description": "Top-5 finalist across 24+ national data science competitions, consistently shipping production-shaped solutions under time pressure."
+    }
+  ]
+}

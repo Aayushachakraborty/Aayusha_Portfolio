@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//f/Portfolio/PORTFOLIO/datanirnaya-react-v2/datanirnaya/**)"
+    ]
+  }
+}

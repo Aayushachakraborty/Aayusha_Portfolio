@@ -1,0 +1,38 @@
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    cursor: auto !important;
+  }
+
+  nav,
+  footer,
+  .cursor-dot,
+  .cursor-ring,
+  .demo-panel,
+  .ring-wrap,
+  .ticker-wrap,
+  .open-pill,
+  .menu-btn {
+    display: none !important;
+  }
+
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 11px;
+  }
+
+  .contact-form,
+  .project-notes,
+  .case-block,
+  .pc,
+  .award-card {
+    border: 1px solid #ccc !important;
+  }
+}

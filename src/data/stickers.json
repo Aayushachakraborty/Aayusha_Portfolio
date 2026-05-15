@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "id": "s1", "emoji": "📊", "section": "hero", "top": "22%", "right": "9%", "size": "3.2rem", "anim": "float", "delay": "0s", "opacity": 0.72 },
+    { "id": "s2", "emoji": "🤖", "section": "hero", "top": "55%", "right": "16%", "size": "2.6rem", "anim": "float-alt", "delay": "1.1s", "opacity": 0.65 },
+    { "id": "s3", "emoji": "⚡", "section": "hero", "top": "38%", "right": "4%", "size": "2rem", "anim": "float-alt", "delay": "2.2s", "opacity": 0.60 },
+    { "id": "s4", "emoji": "📈", "section": "work", "top": "8%", "left": "2%", "size": "2.8rem", "anim": "float", "delay": "0.4s", "opacity": 0.50 },
+    { "id": "s5", "emoji": "📦", "section": "work", "bottom": "8%", "right": "3%", "size": "2.2rem", "anim": "float-alt", "delay": "1.6s", "opacity": 0.45 },
+    { "id": "s6", "emoji": "🧠", "section": "skills", "top": "18%", "right": "4%", "size": "3rem", "anim": "spin-slow", "delay": "0s", "opacity": 0.55 },
+    { "id": "s7", "emoji": "🎯", "section": "awards", "top": "25%", "left": "4%", "size": "2.5rem", "anim": "float", "delay": "0.7s", "opacity": 0.50 },
+    { "id": "s8", "emoji": "💡", "section": "contact", "top": "20%", "right": "6%", "size": "2.8rem", "anim": "pulse-glow", "delay": "0s", "opacity": 0.60 }
+  ]
+}

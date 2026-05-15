@@ -1,0 +1,45 @@
+{
+  "items": [
+    {
+      "company": "Jayanita Exports",
+      "industry": "Manufacturing & Exports",
+      "role": "Data Scientist",
+      "period": "Jan 2025 — Present",
+      "impact": "Cut inventory holding cost 18% and lifted margin 12% via forecasting, supplier risk scoring, and anomaly detection.",
+      "bullets": [
+        "Built SKU-level demand forecasting pipeline (Prophet + LightGBM) on 18 months of order data — MAPE 24% → 11%, holding cost down 18%.",
+        "Developed XGBoost supplier risk model on lead-time, defect rate, and OTD. Flagged top-15% risk suppliers, cut raw-material cost 8%.",
+        "Designed anomaly detection for QC metrics (Isolation Forest + SPC). Defect-driven returns down 15%.",
+        "Built CM3 / SKU profitability models — 12% margin lift across top-50 products. Automated KPI reporting in Power BI, cutting weekly effort ~60%."
+      ],
+      "tags": ["Prophet", "LightGBM", "XGBoost", "Isolation Forest", "SHAP", "Power BI"]
+    },
+    {
+      "company": "Tastes2Plate",
+      "industry": "E-commerce / D2C Food",
+      "role": "Data Analyst",
+      "period": "Jan 2024 — Jan 2025",
+      "impact": "Cut stockouts 35% and lifted GMV 18% across 300+ SKUs through forecasting, pricing, and retention modeling.",
+      "bullets": [
+        "Built time-series + regression forecasting models (SARIMA, Prophet, XGBoost) across 300+ SKUs — stockouts down 35%, overstock down 22%.",
+        "Developed dynamic pricing & discount optimization model (price-elasticity regression) — 18% GMV lift on 40-SKU pilot.",
+        "RFM segmentation + churn modeling — reactivation campaigns lifted 90-day repeat-purchase rate 22%.",
+        "Power BI dashboards adopted for daily founder standups."
+      ],
+      "tags": ["SARIMA", "Prophet", "Price Elasticity", "RFM", "Churn", "Power BI"]
+    },
+    {
+      "company": "Rankkking",
+      "industry": "Digital / Web3",
+      "role": "Marketing Analyst",
+      "period": "Jan 2021 — Dec 2022",
+      "impact": "Drove +25% ad-spend efficiency and supported clients scaling to 300K+ MAU through MMM, attribution, and A/B testing.",
+      "bullets": [
+        "Built Marketing Mix Models + multi-touch attribution — ad-spend efficiency +25%, ROI +20%.",
+        "A/B testing framework for 12+ campaigns — +82% organic traffic, +15% conversions.",
+        "Supported clients scaling to 300K+ MAU."
+      ],
+      "tags": ["MMM", "Attribution", "A/B Testing", "Google Analytics", "SQL"]
+    }
+  ]
+}

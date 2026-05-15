@@ -1,0 +1,9 @@
+{
+  "eyebrow": "Manifesto",
+  "heading": ["Data is my", "creative", "medium."],
+  "paragraphs": [
+    "I don't ship models. I ship decisions. Every forecast, every pricing curve, every supplier risk score is built backwards from a number someone in the business actually has to defend.",
+    "The interesting work isn't picking XGBoost over LightGBM. It's deciding which 12% margin lever leadership pulls on Monday — and proving the model earned that call.",
+    "Four years in, my bias is toward systems that survive contact with messy data, missing labels, and a CFO with a question."
+  ]
+}
