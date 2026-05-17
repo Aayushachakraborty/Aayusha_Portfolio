@@ -4,7 +4,7 @@ export const GAME_SCENES = [
   { path: '/about', label: 'CITY RUN', hud: 'SCENE 03 - CITY RUN' },
   { path: '/skills', label: 'SKILLS DISTRICT', hud: 'SCENE 04 - SKILLS DISTRICT' },
   { path: '/experience', label: 'EXPERIENCE HIGHWAY', hud: 'SCENE 05 - EXPERIENCE HIGHWAY' },
-  { path: '/airport', label: 'AIRPORT', hud: 'SCENE 06 - AIRPORT' },
+  { path: '/airport', label: 'PROJECT LANDING AIRPORT', hud: 'SCENE 06 - PROJECT LANDING AIRPORT' },
   { path: '/project', label: 'PROJECT FLIGHT', hud: 'SCENE 07 - PROJECT FLIGHT' },
   { path: '/contact', label: 'CONTACT HQ', hud: 'SCENE 08 - CONTACT HQ' },
 ];

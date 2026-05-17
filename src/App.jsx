@@ -33,7 +33,7 @@ function AnimatedRoutes({ profile, reducedMotion }) {
   return (
     <>
       <GameHud />
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync" initial={false}>
         <Suspense fallback={<div className="game-loader">Loading scene...</div>}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<BootScene profile={profile} />} />
@@ -59,8 +59,11 @@ function AppShell() {
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const saved = 'dark';
-    document.documentElement.setAttribute('data-theme', saved);
+    const saved = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    const theme = saved || systemTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+    if (!saved) localStorage.setItem('theme', theme);
   }, []);
 
   useEffect(() => {

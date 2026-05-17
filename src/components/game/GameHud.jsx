@@ -38,14 +38,14 @@ export default function GameHud() {
         <span className="hud-dot" aria-hidden="true" />
         <span>{scene.hud}</span>
       </div>
-      <nav className="hud-right" aria-label="Game controls">
+      <div className="hud-right" role="navigation" aria-label="Game controls">
         <span>{time} IST</span>
         <button className="hud-icon-button" type="button" onClick={toggleMute} aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}>
           <span aria-hidden="true">{isMuted ? 'SFX-' : 'SFX+'}</span>
           <span>{isMuted ? 'MUTE' : 'SOUND'}</span>
         </button>
         <Link to="/resume">SKIP TO RESUME</Link>
-      </nav>
+      </div>
       <div className="scene-progress" aria-label="Scene progress">
         {GAME_SCENES.map((item) => (
           <span

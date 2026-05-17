@@ -14,7 +14,7 @@ export default function WorldEntryScene() {
   useEffect(() => {
     setScene(1);
     startEngineLoop(isMuted);
-    const id = window.setTimeout(() => navigate('/about'), 1900);
+    const id = window.setTimeout(() => navigate('/about'), 1050);
     return () => {
       window.clearTimeout(id);
       stopEngineLoop();

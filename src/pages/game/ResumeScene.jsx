@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import HomePage from '../HomePage';
 import Nav from '../../components/layout/Nav';
 import Footer from '../../components/layout/Footer';
@@ -5,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ResumeScene({ profile, reducedMotion }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.classList.add('resume-theme');
+    return () => document.body.classList.remove('resume-theme');
+  }, []);
 
   return (
     <>
