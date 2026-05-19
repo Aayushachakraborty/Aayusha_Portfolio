@@ -139,15 +139,25 @@ function ScrollWorldController({ reducedMotion }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [transitionDirection, setTransitionDirection] = useState('');
+  const [compactScreen, setCompactScreen] = useState(false);
   const lastMoveRef = useRef(0);
   const touchStartRef = useRef(null);
   const scrollIndex = getWorldScrollIndex(location.pathname);
   const enabled = scrollIndex >= 0;
+  const showWorldUi = enabled && !compactScreen;
   const backdropKey = getWorldBackdropKey(location.pathname);
   const activeChapter = WORLD_CHAPTERS[Math.max(scrollIndex, 0)] || WORLD_CHAPTERS[0];
 
   useEffect(() => {
-    if (!enabled) return undefined;
+    const query = window.matchMedia('(max-width: 768px)');
+    const update = () => setCompactScreen(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled || compactScreen) return undefined;
 
     const goToScene = (direction) => {
       const now = window.performance.now();
@@ -189,12 +199,12 @@ function ScrollWorldController({ reducedMotion }) {
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchend', onTouchEnd);
     };
-  }, [enabled, navigate, scrollIndex]);
+  }, [compactScreen, enabled, navigate, scrollIndex]);
 
   return (
     <>
       <div className={`world-scroll-backdrop scene-${backdropKey} ${transitionDirection ? `is-moving-${transitionDirection}` : ''}`} aria-hidden="true" />
-      {enabled && (
+      {showWorldUi && (
         <>
           <aside className="world-chapter-rail" aria-label="World chapters">
             {WORLD_CHAPTERS.map((chapter, index) => (
@@ -221,7 +231,7 @@ function ScrollWorldController({ reducedMotion }) {
           <DataGuideSticker chapter={activeChapter} pathname={location.pathname} reducedMotion={reducedMotion} />
         </>
       )}
-      {enabled && !reducedMotion && (
+      {showWorldUi && !reducedMotion && (
         <div className="world-scroll-hint" aria-hidden="true">
           <span />
           <strong>{scrollIndex === SCROLL_WORLD_PATHS.length - 1 ? 'scroll up' : 'scroll'}</strong>

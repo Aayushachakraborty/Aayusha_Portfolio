@@ -8339,3 +8339,264 @@ button {
 [data-theme="light"] .hud-icon-button {
   color: #081e44;
 }
+
+/* Final mobile reliability pass: keep content scrollable and prevent fixed UI overlap. */
+@media (max-width: 768px) {
+  html,
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .route-slide {
+    min-height: 100svh;
+  }
+
+  .world-chapter-rail,
+  .world-chapter-title,
+  .world-progress-ring,
+  .world-scroll-hint,
+  .data-guide-sticker {
+    display: none !important;
+  }
+
+  .game-hud {
+    background: rgba(5, 5, 16, 0.82);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 8px 10px;
+  }
+
+  .hud-left,
+  .hud-right {
+    border-radius: 0;
+    min-height: 34px;
+    padding: 7px 8px;
+    width: auto;
+  }
+
+  .hud-left {
+    max-width: none;
+    min-width: 0;
+  }
+
+  .hud-left span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hud-right {
+    display: inline-flex;
+    gap: 8px;
+    justify-self: end;
+    max-width: none;
+  }
+
+  .hud-right > span:first-child,
+  .hud-right a {
+    display: none;
+  }
+
+  .hud-icon-button span:first-child {
+    display: none;
+  }
+
+  .scene-progress {
+    display: none;
+  }
+
+  .game-scene,
+  .boot-v2,
+  .world-entry,
+  .story-scene,
+  .skills-game-scene,
+  .experience-scene,
+  .airport-scene,
+  .project-flight-scene,
+  .contact-hq-scene {
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 74px;
+  }
+
+  .boot-v2-stage {
+    min-height: 100svh;
+    overflow-y: auto;
+    padding-top: 74px;
+  }
+
+  .story-scene,
+  .skills-game-scene,
+  .experience-scene,
+  .airport-scene,
+  .project-flight-scene,
+  .contact-hq-scene {
+    display: block;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 34px;
+  }
+
+  .mouse-drive-stage,
+  .skills-drive-stage,
+  .experience-drive-stage,
+  .scroll-stage {
+    display: block;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .parallax-city {
+    height: auto;
+    min-height: 360px;
+    overflow: hidden;
+  }
+
+  .about-scroll-track,
+  .skills-scroll-track,
+  .mouse-drive-track {
+    min-height: 360px;
+  }
+
+  .billboard-strip,
+  .neon-storefronts,
+  .highway {
+    inset: auto;
+    margin: 16px auto 0;
+    position: relative;
+    top: auto;
+    width: min(560px, calc(100vw - 28px));
+  }
+
+  .story-panel,
+  .about-panel,
+  .floating-skill-panel,
+  .skills-game-scene .floating-skill-panel,
+  .experience-panel,
+  .departure-board,
+  .case-study,
+  .contact-card-game {
+    bottom: auto;
+    left: auto;
+    margin: 18px auto 0;
+    max-height: none;
+    overflow: visible;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: min(560px, calc(100vw - 28px));
+  }
+
+  .about-panel .panel-actions,
+  .skills-game-scene .panel-actions,
+  .experience-panel .panel-actions {
+    background: transparent;
+    padding: 16px 0 0;
+    position: static;
+  }
+
+  .about-social-rail {
+    position: static;
+    width: 100%;
+    margin: 0 0 14px;
+  }
+
+  .about-dossier,
+  .experience-dossier {
+    overflow: visible;
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+
+  .skill-bars,
+  .departure-board,
+  .contact-card-game {
+    overflow: visible;
+  }
+
+  .airport-terminal {
+    min-height: 320px;
+    position: relative;
+  }
+
+  .airport-car-layer,
+  .mouse-car-layer {
+    display: none;
+  }
+
+  .board-head {
+    display: none;
+  }
+
+  .board-row {
+    align-items: start;
+    gap: 4px 8px;
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    padding: 12px 8px !important;
+  }
+
+  .board-row span:nth-child(3),
+  .board-row span:nth-child(4) {
+    font-size: 10px;
+  }
+
+  .board-row span:nth-child(3) {
+    grid-column: 2;
+  }
+
+  .board-row span:nth-child(4) {
+    display: none;
+  }
+
+  .board-row strong {
+    min-width: 0 !important;
+    overflow: visible !important;
+    overflow-wrap: anywhere !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  .case-grid-game {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links-game a,
+  .game-cta,
+  .game-link-next,
+  .press-start {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .decoder-name {
+    font-size: clamp(30px, 9vw, 40px) !important;
+    line-height: 1.08 !important;
+    max-width: calc(100vw - 34px) !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .boot-v2-stage {
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .boot-minimal-actions {
+    max-width: 45vw;
+    overflow: hidden;
+  }
+
+  .boot-minimal-actions button span,
+  .boot-minimal-actions a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
