@@ -1,6 +1,7 @@
 import RevealOnScroll from '../shared/RevealOnScroll';
 import Decoration from '../shared/Decoration';
 import { useReveal } from '../../hooks/useReveal';
+import { formatJobPeriodWithDuration } from '../../utils/format';
 
 function StaggerLine({ words, startIndex, visible }) {
   return words.map((word, index) => (
@@ -30,7 +31,7 @@ export default function Story({ experience, reducedMotion, decorations = [] }) {
       <div className="jobs">
         {experience.items?.map((job) => (
           <RevealOnScroll as="article" className="job" key={`${job.company}-${job.role}`} disabled={reducedMotion}>
-            <div className="job-year">{job.period}</div>
+            <div className="job-year">{formatJobPeriodWithDuration(job)}</div>
             <div className="job-line"><div className="job-dot" /><div className="job-connector" /></div>
             <div className="job-content">
               <div className="job-company">{job.company}</div>

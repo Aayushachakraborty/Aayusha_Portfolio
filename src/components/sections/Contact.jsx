@@ -71,10 +71,10 @@ export default function Contact({ person, decorations = [] }) {
   return (
     <section id="contact">
       {decorations.map((decoration) => <Decoration key={decoration.id} {...decoration} />)}
-      <div className="contact-bg-text" aria-hidden="true">Hire<br />Me.</div>
+      <div className="contact-bg-text" aria-hidden="true">Say<br />Hi.</div>
       <div className="contact-pre rv on">Ready when you are</div>
       <h2 className="contact-head rv on">Let&apos;s<br /><em>build</em><br /><span className="out2">together.</span></h2>
-      <p className="contact-sub rv on">{person.availability}</p>
+      <p className="contact-sub rv on">Send a note, a question, or a strange data problem.</p>
       <div className="contact-grid">
         <div className="contact-copy rv on">
           <div className="contact-card">

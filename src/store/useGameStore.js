@@ -3,7 +3,7 @@ import { create } from 'zustand';
 const initialState = {
   sceneIndex: 0,
   visitedProjects: [],
-  isMuted: true,
+  isMuted: typeof window === 'undefined' ? true : window.localStorage.getItem('aayusha.sound') !== 'on',
   hasStarted: false,
   selectedProject: '',
 };
@@ -18,6 +18,21 @@ export const useGameStore = create((set) => ({
       ? state.visitedProjects
       : [...state.visitedProjects, slug],
   })),
-  toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
-  restart: () => set({ ...initialState }),
+  toggleMute: () => set((state) => {
+    const isMuted = !state.isMuted;
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('aayusha.sound', isMuted ? 'off' : 'on');
+    }
+    return { isMuted };
+  }),
+  setMuted: (isMuted) => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('aayusha.sound', isMuted ? 'off' : 'on');
+    }
+    set({ isMuted });
+  },
+  restart: () => {
+    if (typeof window !== 'undefined') window.localStorage.removeItem('aayusha.sound');
+    set({ ...initialState });
+  },
 }));

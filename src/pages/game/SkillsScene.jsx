@@ -5,7 +5,7 @@ import Character from '../../components/world/Character';
 import ParallaxCity from '../../components/world/ParallaxCity';
 import Sign from '../../components/world/Sign';
 import { useGameStore } from '../../store/useGameStore';
-import { playUiChime, startEngineLoop, stopEngineLoop } from '../../utils/gameAudio';
+import { playUiChime } from '../../utils/gameAudio';
 
 const storefronts = ['PYTHON.SHOP', 'ML.LAB', 'TIME_SERIES.DOJO', 'RL.ARENA', 'MLOPS.GARAGE', 'SQL.DINER'];
 
@@ -17,9 +17,7 @@ export default function SkillsScene({ profile }) {
 
   useEffect(() => {
     setScene(3);
-    startEngineLoop(isMuted);
-    return () => stopEngineLoop();
-  }, [isMuted, setScene]);
+  }, [setScene]);
 
   function handleMouseMove(event) {
     if (!carRef.current) return;

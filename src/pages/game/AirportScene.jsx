@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SceneFrame from '../../components/game/SceneFrame';
 import Character from '../../components/world/Character';
 import { useGameStore } from '../../store/useGameStore';
-import { playUiChime, startEngineLoop, stopEngineLoop } from '../../utils/gameAudio';
+import { playUiChime } from '../../utils/gameAudio';
 
 export default function AirportScene({ profile }) {
   const navigate = useNavigate();
@@ -15,9 +15,7 @@ export default function AirportScene({ profile }) {
 
   useEffect(() => {
     setScene(5);
-    startEngineLoop(isMuted);
-    return () => stopEngineLoop();
-  }, [isMuted, setScene]);
+  }, [setScene]);
 
   function handleMouseMove(event) {
     if (!carRef.current) return;
@@ -73,7 +71,7 @@ export default function AirportScene({ profile }) {
       <section className="departure-board" aria-label="Project departure board">
         <div className="board-head">
           <span>FLIGHT</span>
-          <span>DESTINATION</span>
+          <span>ROUTE</span>
           <span>STATUS</span>
           <span>GATE</span>
         </div>
@@ -87,7 +85,7 @@ export default function AirportScene({ profile }) {
         ))}
         <Link className={`board-row final ${visitedProjects.length ? '' : 'disabled'}`} to={visitedProjects.length ? '/contact' : '/airport'}>
           <span>HQ99</span>
-          <strong>FINAL DESTINATION - CONTACT HQ</strong>
+          <strong>CONTACT HQ</strong>
           <span>{visitedProjects.length ? 'READY' : 'LOCKED'}</span>
           <span>H1</span>
         </Link>

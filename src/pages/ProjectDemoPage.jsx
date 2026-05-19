@@ -33,7 +33,7 @@ export default function ProjectDemoPage({ project, navigate, meta }) {
 
       <section className="project-demo-shell">
         <Suspense fallback={<div className="demo-panel"><p>Loading demo…</p></div>}>
-          {Demo ? <Demo type={project.demo} /> : <div className="demo-panel"><p>Demo unavailable.</p></div>}
+          {Demo ? <Demo type={project.demo} /> : <div className="demo-panel"><p>Demo not ready.</p></div>}
         </Suspense>
       </section>
     </main>

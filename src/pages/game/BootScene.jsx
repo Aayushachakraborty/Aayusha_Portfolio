@@ -1,35 +1,38 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Volume2, VolumeX } from 'lucide-react';
 import SceneFrame from '../../components/game/SceneFrame';
 import { useGameStore } from '../../store/useGameStore';
-import { playStartSound, playUiChime } from '../../utils/gameAudio';
+import {
+  playFrontEnter,
+  playFrontHover,
+  startFrontAmbient,
+  stopFrontAmbient,
+} from '../../utils/gameAudio';
 
 const scrambleChars = '!<>-_/[]{}=+*^?#________ABCDEF0123456789';
-const terminalLines = [
-  '> initializing portfolio.exe...',
-  '> loading neural_layers [OK]',
-  '> mlflow_server: CONNECTED',
-  '> forecasting_engine: CALIBRATED',
-  '> 4yr xp [VERIFIED]',
-  '> 12 models [DEPLOYED]',
-  '> awaiting recruiter input_',
-];
 const orbitalTags = [
-  ['PyTorch', 30, 310, 'cyan'],
-  ['MLflow', 60, 355, 'violet'],
-  ['Forecasting', 90, 285, 'pink'],
-  ['FastAPI', 120, 340, 'amber'],
-  ['Recharts', 150, 300, 'cyan'],
-  ['Reinforcement Learning', 210, 370, 'violet'],
-  ['Python', 240, 300, 'pink'],
-  ['SQL', 270, 350, 'amber'],
-  ['Anomaly Detection', 330, 320, 'cyan'],
+  ['forecasting', 30, 285, 'cyan'],
+  ['supply chains', 80, 330, 'violet'],
+  ['reinforcement learning', 132, 292, 'pink'],
+  ['anomaly detection', 184, 334, 'amber'],
+  ['mlops', 236, 286, 'cyan'],
+  ['time series', 288, 326, 'violet'],
+  ['decision intelligence', 338, 300, 'pink'],
 ];
-const stats = [
-  { value: 4, suffix: '', label: 'YEARS XP' },
-  { value: 12, suffix: '', label: 'MODELS SHIPPED' },
-  { value: 2400000, suffix: '', label: 'SKUs FORECASTED' },
-  { value: 23, suffix: '%', label: 'STOCKOUT DOWN' },
+const constellationStops = [
+  ['now', null, 10, 62],
+  ['the city', '/about', 26, 54],
+  ['skills', '/skills', 42, 59],
+  ['the highway', '/experience', 58, 48],
+  ['the gate', '/airport', 75, 55],
+  ['home', '/contact', 91, 42],
+];
+const questChapters = [
+  ['the city', 'meet the person behind the models'],
+  ['skills district', 'walk past the tools and systems'],
+  ['the highway', 'follow the work from 2021 to now'],
+  ['the gate', 'board four project missions'],
 ];
 
 function useReducedMotionQuery() {
@@ -44,6 +47,20 @@ function useReducedMotionQuery() {
   }, []);
 
   return reduced;
+}
+
+function useCompactScreen() {
+  const [compact, setCompact] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 768px)');
+    const update = () => setCompact(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  return compact;
 }
 
 function useDecodedText(finalText, delay, duration, reducedMotion) {
@@ -84,37 +101,6 @@ function useDecodedText(finalText, delay, duration, reducedMotion) {
   }, [delay, duration, finalText, reducedMotion]);
 
   return text;
-}
-
-function useCounter(target, delay, duration, reducedMotion) {
-  const [value, setValue] = useState(reducedMotion ? target : 0);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      setValue(target);
-      return undefined;
-    }
-
-    let startTime = 0;
-    let raf = 0;
-    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
-    const delayId = window.setTimeout(() => {
-      const tick = (now) => {
-        if (!startTime) startTime = now;
-        const progress = Math.min(1, (now - startTime) / duration);
-        setValue(Math.round(target * easeOut(progress)));
-        if (progress < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-    }, delay);
-
-    return () => {
-      window.clearTimeout(delayId);
-      cancelAnimationFrame(raf);
-    };
-  }, [delay, duration, reducedMotion, target]);
-
-  return value;
 }
 
 function CodeRainCanvas({ reducedMotion }) {
@@ -265,38 +251,39 @@ function NeuralCanvas({ mouseRef, reducedMotion }) {
   return <canvas ref={canvasRef} className="neural-canvas" aria-hidden="true" />;
 }
 
-function StatCounter({ stat, reducedMotion }) {
-  const value = useCounter(stat.value, 2000, 1800, reducedMotion);
-  const formatted = value > 10000 ? value.toLocaleString('en-IN') : value.toString();
+function Constellation({ onJump, onHover }) {
   return (
-    <div className="boot-v2-stat">
-      <strong>{formatted}{stat.suffix}</strong>
-      <span>{stat.label}</span>
-    </div>
-  );
-}
-
-function renderTerminalLine(line) {
-  const highlighted = ['[OK]', 'CONNECTED', 'CALIBRATED', '[VERIFIED]', '[DEPLOYED]'];
-  const match = highlighted.find((token) => line.includes(token));
-  if (!match) return line;
-  const [before, after] = line.split(match);
-  return (
-    <>
-      {before}<span>{match}</span>{after}
-    </>
+    <nav className="boot-constellation" aria-label="Quiet scene shortcuts">
+      <svg viewBox="0 0 100 68" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points={constellationStops.map(([, , x, y]) => `${x},${y}`).join(' ')} />
+      </svg>
+      {constellationStops.map(([label, path, x, y], index) => (
+        <button
+          className={index === 0 ? 'is-active' : ''}
+          key={label}
+          type="button"
+          aria-label={`Skip to: ${label}`}
+          onClick={() => onJump(path)}
+          onMouseEnter={onHover}
+          onFocus={onHover}
+          style={{ left: `${x}%`, top: `${y}%` }}
+        >
+          <span>{label}</span>
+        </button>
+      ))}
+    </nav>
   );
 }
 
 export default function BootScene({ profile }) {
   const navigate = useNavigate();
   const reducedMotion = useReducedMotionQuery();
+  const compactScreen = useCompactScreen();
+  const simplifiedMotion = reducedMotion || compactScreen;
   const start = useGameStore((state) => state.start);
-  const toggleMute = useGameStore((state) => state.toggleMute);
   const isMuted = useGameStore((state) => state.isMuted);
-  const [terminalCount, setTerminalCount] = useState(0);
-  const [mouseHud, setMouseHud] = useState({ x: 0, y: 0 });
-  const [clock, setClock] = useState('');
+  const setMuted = useGameStore((state) => state.setMuted);
+  const [debugEnabled] = useState(() => new URLSearchParams(window.location.search).get('debug') === '1');
   const [fps, setFps] = useState(60);
   const [nearStart, setNearStart] = useState(false);
   const mouseRef = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
@@ -305,41 +292,19 @@ export default function BootScene({ profile }) {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const startedRef = useRef(false);
-  const mouseHudRef = useRef({ x: 0, y: 0 });
   const nearStartRef = useRef(false);
-  const firstName = useDecodedText('AAYUSHA', 400, 1100, reducedMotion);
-  const lastName = useDecodedText('CHAKRABORTY', 700, 1400, reducedMotion);
-  const build = useMemo(() => 'PORTFOLIO_V4.0.7', []);
+  const lastChimeRef = useRef(0);
+  const firstName = useDecodedText('AAYUSHA', 400, 1100, simplifiedMotion);
+  const lastName = useDecodedText('CHAKRABORTY', 700, 1400, simplifiedMotion);
 
   useEffect(() => {
-    const tick = () => {
-      setClock(new Intl.DateTimeFormat('en-IN', {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-      }).format(new Date()));
-    };
-    tick();
-    const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, []);
+    if (window.localStorage.getItem('aayusha.sound') === 'on') {
+      setMuted(false);
+      startFrontAmbient();
+    }
 
-  useEffect(() => {
-    setTerminalCount(0);
-    const startId = window.setTimeout(() => {
-      const id = window.setInterval(() => {
-        setTerminalCount((count) => {
-          if (count >= terminalLines.length) {
-            window.clearInterval(id);
-            return count;
-          }
-          return count + 1;
-        });
-      }, 350);
-    }, 2600);
-    return () => window.clearTimeout(startId);
-  }, []);
+    return () => stopFrontAmbient();
+  }, [setMuted]);
 
   useEffect(() => {
     const onKey = (event) => {
@@ -350,7 +315,7 @@ export default function BootScene({ profile }) {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [isMuted]);
 
   useEffect(() => {
     let ringX = mouseRef.current.x;
@@ -365,7 +330,7 @@ export default function BootScene({ profile }) {
 
     const loop = (now) => {
       frames += 1;
-      if (now - lastFps >= 1000) {
+      if (debugEnabled && now - lastFps >= 1000) {
         setFps(Math.round((frames * 1000) / (now - lastFps)));
         frames = 0;
         lastFps = now;
@@ -381,7 +346,7 @@ export default function BootScene({ profile }) {
         ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
       }
 
-      if (!reducedMotion && tiltRef.current) {
+      if (!simplifiedMotion && tiltRef.current) {
         const targetX = ((mouse.y - window.innerHeight / 2) / (window.innerHeight / 2)) * -6;
         const targetY = ((mouse.x - window.innerWidth / 2) / (window.innerWidth / 2)) * 6;
         tiltX += (targetX - tiltX) * 0.08;
@@ -396,8 +361,8 @@ export default function BootScene({ profile }) {
         const dx = mouse.x - cx;
         const dy = mouse.y - cy;
         const distance = Math.hypot(dx, dy);
-        const targetX = distance < 160 && !reducedMotion ? dx * 0.3 : 0;
-        const targetY = distance < 160 && !reducedMotion ? dy * 0.3 : 0;
+        const targetX = distance < 160 && !simplifiedMotion ? dx * 0.3 : 0;
+        const targetY = distance < 160 && !simplifiedMotion ? dy * 0.3 : 0;
         buttonX += (targetX - buttonX) * 0.15;
         buttonY += (targetY - buttonY) * 0.15;
         buttonRef.current.style.transform = `translate3d(${buttonX}px, ${buttonY}px, 0)`;
@@ -405,7 +370,7 @@ export default function BootScene({ profile }) {
         if (nextNearStart !== nearStartRef.current) {
           nearStartRef.current = nextNearStart;
           setNearStart(nextNearStart);
-          if (nextNearStart) playUiChime(isMuted);
+          if (nextNearStart) playHoverChime();
         }
       }
 
@@ -414,18 +379,17 @@ export default function BootScene({ profile }) {
 
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [isMuted, reducedMotion]);
+  }, [debugEnabled, isMuted, simplifiedMotion]);
 
   useEffect(() => {
     const onMove = (event) => {
       const x = event.clientX;
       const y = event.clientY;
       mouseRef.current = { x, y };
-      mouseHudRef.current = { x: Math.round(x), y: Math.round(y) };
       document.documentElement.style.setProperty('--mx', `${(x / window.innerWidth) * 100}%`);
       document.documentElement.style.setProperty('--my', `${(y / window.innerHeight) * 100}%`);
 
-      if (!reducedMotion && window.innerWidth >= 768 && Math.random() < 0.14) {
+      if (!simplifiedMotion && window.innerWidth >= 768 && Math.random() < 0.14) {
         const particle = document.createElement('span');
         particle.className = 'cursor-trail-particle';
         particle.style.left = `${x}px`;
@@ -439,71 +403,77 @@ export default function BootScene({ profile }) {
 
     window.addEventListener('mousemove', onMove);
     return () => window.removeEventListener('mousemove', onMove);
-  }, [reducedMotion]);
+  }, [simplifiedMotion]);
 
-  useEffect(() => {
-    const id = window.setInterval(() => setMouseHud(mouseHudRef.current), 120);
-    return () => window.clearInterval(id);
-  }, []);
+  function playHoverChime() {
+    const now = performance.now();
+    if (now - lastChimeRef.current < 200) return;
+    lastChimeRef.current = now;
+    playFrontHover(isMuted);
+  }
 
-  function handleStart() {
+  function handleSoundToggle() {
+    playHoverChime();
+    if (isMuted) {
+      setMuted(false);
+      window.localStorage.setItem('aayusha.sound', 'on');
+      startFrontAmbient();
+      window.setTimeout(() => playFrontHover(false), 80);
+    } else {
+      setMuted(true);
+      window.localStorage.setItem('aayusha.sound', 'off');
+      stopFrontAmbient();
+    }
+  }
+
+  function transitionTo(path) {
     if (startedRef.current) return;
     startedRef.current = true;
-    playStartSound(isMuted);
+    playFrontEnter(isMuted);
+    stopFrontAmbient();
     if (buttonRef.current) buttonRef.current.classList.add('start-exit');
     start();
     document.body.classList.add('screen-flash');
     window.setTimeout(() => {
-      navigate('/world');
+      navigate(path);
       window.setTimeout(() => document.body.classList.remove('screen-flash'), 120);
     }, 260);
   }
 
+  function handleStart() {
+    transitionTo('/world');
+  }
+
+  function handleJourneyJump(path) {
+    if (!path) return;
+    transitionTo(path);
+  }
+
   return (
     <SceneFrame className={`boot-scene boot-v2 ${nearStart ? 'cursor-near-start' : ''}`}>
-      <CodeRainCanvas reducedMotion={reducedMotion} />
-      <NeuralCanvas mouseRef={mouseRef} reducedMotion={reducedMotion} />
+      <CodeRainCanvas reducedMotion={simplifiedMotion} />
+      <NeuralCanvas mouseRef={mouseRef} reducedMotion={simplifiedMotion} />
       <div className="boot-v2-grid" aria-hidden="true" />
       <div className="boot-v2-radial" aria-hidden="true" />
       <div className="boot-v2-scan" aria-hidden="true" />
       <div className="boot-v2-vignette" aria-hidden="true" />
 
-      <div className="boot-corner-hud top-left">
-        <p>// SYSTEM <span><i /> ONLINE</span></p>
-        <p>// SESSION <strong>{build}</strong></p>
+      <div className="boot-minimal-mark">
+        <span className="pulse-dot" aria-hidden="true" />
+        <span>aayusha · 2026</span>
       </div>
-      <div className="boot-corner-hud top-right">
-        <p>LOCAL TIME // <strong>{clock}</strong></p>
-        <p>COORDS // <strong>28.61N - 77.21E</strong></p>
-        <Link to="/resume">[SKIP TO RESUME]</Link>
+      <div className="boot-minimal-actions" role="navigation" aria-label="front page controls">
+        <button className={isMuted ? '' : 'sound-on'} type="button" onClick={handleSoundToggle} onMouseEnter={playHoverChime} onFocus={playHoverChime}>
+          {isMuted ? <VolumeX aria-hidden="true" /> : <Volume2 aria-hidden="true" />}
+          <span>{isMuted ? 'sound on' : 'sound off'}</span>
+        </button>
+        <span aria-hidden="true" />
+        <Link to="/resume" onMouseEnter={playHoverChime} onFocus={playHoverChime}>skip</Link>
       </div>
-      <div className="boot-corner-hud bottom-left">
-        <p>// MOUSE <strong>[ {mouseHud.x}, {mouseHud.y} ]</strong></p>
-      </div>
-      <div className="boot-corner-hud bottom-right">
-        <p>FPS // <strong>{fps}</strong></p>
-        <button type="button" onClick={toggleMute}>SFX // <strong>{isMuted ? 'MUTE' : 'ON'}</strong></button>
-      </div>
-
-      <div className="boot-terminal-v2" aria-live="polite">
-        {terminalLines.slice(0, terminalCount).map((line) => (
-          <p key={line}>{renderTerminalLine(line)}</p>
-        ))}
-      </div>
-
-      <div className="boot-side-stats" aria-hidden="true">
-        {[
-          ['ML_FORECASTING', 95],
-          ['MLOPS', 85],
-          ['RL_AGENTS', 78],
-          ['ANOMALY_DET', 88],
-        ].map(([label, value]) => (
-          <p key={label}><span>{label}</span><i><b style={{ width: `${value}%` }} /></i></p>
-        ))}
-      </div>
+      {debugEnabled && <div className="boot-debug-fps">fps {fps}</div>}
 
       <section className="boot-v2-stage" ref={tiltRef}>
-        <p className="boot-profile-pill">// PLAYER_PROFILE.LOADED</p>
+        <p className="boot-whisper top">hey, welcome to aayusha&apos;s world.</p>
         <div className="orbital-tags" aria-hidden="true">
           {orbitalTags.map(([tag, angle, distance, color], index) => (
             <span
@@ -512,8 +482,9 @@ export default function BootScene({ profile }) {
               style={{
                 '--angle': `${angle}deg`,
                 '--distance': `${distance}px`,
-                '--delay': `${2400 + index * 80}ms`,
+                '--delay': `${1800 + index * 80}ms`,
               }}
+              onMouseEnter={playHoverChime}
             >
               {tag}
             </span>
@@ -523,22 +494,35 @@ export default function BootScene({ profile }) {
           <span aria-hidden="true">{firstName}</span>
           <span aria-hidden="true">{lastName}</span>
         </h1>
-        <p className="boot-v2-subtitle">data_scientist.exe - supply chain x e-commerce x production ML</p>
-        <div className="boot-v2-stats">
-          {stats.map((stat) => <StatCounter key={stat.label} stat={stat} reducedMotion={reducedMotion} />)}
+        <p className="boot-v2-subtitle">a small quest through data, decisions, and systems that learned to move.</p>
+        <div className="quest-prologue" aria-label="What is inside this portfolio journey">
+          <p>inside the world: a city, a skills district, a long road, and four missions waiting at the gate.</p>
+          <ul>
+            {questChapters.map(([place, hint]) => (
+              <li key={place} onMouseEnter={playHoverChime}>
+                <strong>{place}</strong>
+                <span>{hint}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <button
           ref={buttonRef}
-          className="press-start press-start-v2"
+          className="enter-world-button"
           type="button"
           onClick={handleStart}
-          aria-label="Begin portfolio quest"
+          onMouseEnter={playHoverChime}
+          onFocus={playHoverChime}
+          aria-label="Enter the portfolio experience"
         >
-          <span aria-hidden="true">PRESS START</span>
+          <span aria-hidden="true">start the quest</span>
           <i className="corner-a" aria-hidden="true" />
           <i className="corner-b" aria-hidden="true" />
         </button>
+        <p className="boot-whisper bottom">press [space] or click to begin · skip anytime</p>
       </section>
+
+      <Constellation onJump={handleJourneyJump} onHover={playHoverChime} />
 
       <div className="audio-bars" aria-hidden="true">
         {Array.from({ length: 60 }).map((_, index) => (

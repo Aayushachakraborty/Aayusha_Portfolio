@@ -4,7 +4,8 @@ import SceneFrame from '../../components/game/SceneFrame';
 import Character from '../../components/world/Character';
 import CloudCard from '../../components/world/CloudCard';
 import { useGameStore } from '../../store/useGameStore';
-import { playUiChime, startEngineLoop, stopEngineLoop } from '../../utils/gameAudio';
+import { playUiChime } from '../../utils/gameAudio';
+import { formatJobPeriodWithDuration } from '../../utils/format';
 
 export default function ExperienceScene({ profile }) {
   const [active, setActive] = useState(profile.experience.items[0]);
@@ -14,9 +15,7 @@ export default function ExperienceScene({ profile }) {
 
   useEffect(() => {
     setScene(4);
-    startEngineLoop(isMuted);
-    return () => stopEngineLoop();
-  }, [isMuted, setScene]);
+  }, [setScene]);
 
   function handleMouseMove(event) {
     if (!carRef.current) return;
@@ -56,7 +55,7 @@ export default function ExperienceScene({ profile }) {
             playUiChime(isMuted);
             setActive(job);
           }}>
-            <span>{job.period}</span>
+            <span>{formatJobPeriodWithDuration(job)}</span>
             <strong>{job.company}</strong>
           </CloudCard>
         ))}

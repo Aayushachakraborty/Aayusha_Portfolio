@@ -11,9 +11,9 @@ import video from '../data/video.json';
 import meta from '../data/meta.json';
 import decorations from '../data/decorations.json';
 import { profileService } from '../services/profile.service';
-import { deepMerge } from '../utils/format';
+import { deepMerge, enrichProfileExperience } from '../utils/format';
 
-const baselineProfile = {
+const baselineProfile = enrichProfileExperience({
   person,
   ticker,
   manifesto,
@@ -25,7 +25,7 @@ const baselineProfile = {
   video,
   meta,
   decorations,
-};
+});
 
 export function useProfile() {
   const [profile, setProfile] = useState(baselineProfile);
@@ -45,7 +45,7 @@ export function useProfile() {
     profileService.fetch(apiUrl)
       .then((payload) => {
         if (!mounted) return;
-        setProfile((current) => deepMerge(current, payload));
+        setProfile((current) => enrichProfileExperience(deepMerge(current, payload)));
         setSource('api');
         setError('');
       })

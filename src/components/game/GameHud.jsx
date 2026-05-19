@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useGameStore } from '../../store/useGameStore';
 import { GAME_SCENES, getSceneByPath } from '../../utils/gameScenes';
+import { playUiChime, unlockAudio } from '../../utils/gameAudio';
 
 function useIstClock() {
   const [time, setTime] = useState('');
@@ -29,6 +30,11 @@ export default function GameHud() {
   const isMuted = useGameStore((state) => state.isMuted);
   const toggleMute = useGameStore((state) => state.toggleMute);
   const scene = getSceneByPath(location.pathname);
+  const handleSoundToggle = () => {
+    unlockAudio();
+    toggleMute();
+    playUiChime(false);
+  };
 
   if (location.pathname === '/' || location.pathname === '/resume') return null;
 
@@ -40,7 +46,7 @@ export default function GameHud() {
       </div>
       <div className="hud-right" role="navigation" aria-label="Game controls">
         <span>{time} IST</span>
-        <button className="hud-icon-button" type="button" onClick={toggleMute} aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}>
+        <button className="hud-icon-button" type="button" onClick={handleSoundToggle} aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}>
           <span aria-hidden="true">{isMuted ? 'SFX-' : 'SFX+'}</span>
           <span>{isMuted ? 'MUTE' : 'SOUND'}</span>
         </button>

@@ -141,7 +141,7 @@ function SKUModal({ row, domain, cur, onClose }) {
             </div>
           )}
 
-          {/* Sentiment if available */}
+          {/* Sentiment when present */}
           {row.SentimentExplanation && (
             <div className={styles.modalSection}>
               <div className={styles.modalSectionTitle}>Customer Sentiment</div>

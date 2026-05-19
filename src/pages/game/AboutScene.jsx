@@ -5,18 +5,15 @@ import Character from '../../components/world/Character';
 import ParallaxCity from '../../components/world/ParallaxCity';
 import Sign from '../../components/world/Sign';
 import { useGameStore } from '../../store/useGameStore';
-import { startEngineLoop, stopEngineLoop } from '../../utils/gameAudio';
 
 export default function AboutScene({ profile, reducedMotion }) {
   const carRef = useRef(null);
   const setScene = useGameStore((state) => state.setScene);
-  const isMuted = useGameStore((state) => state.isMuted);
+  const experienceYears = profile.person.experienceYearsBadge || '4+';
 
   useEffect(() => {
     setScene(2);
-    startEngineLoop(isMuted);
-    return () => stopEngineLoop();
-  }, [isMuted, setScene]);
+  }, [setScene]);
 
   function handleMouseMove(event) {
     if (reducedMotion || !carRef.current) return;
@@ -34,7 +31,7 @@ export default function AboutScene({ profile, reducedMotion }) {
               <Character />
             </div>
             <div className="billboard-strip">
-              <Sign title="4 YEARS XP">Production ML</Sign>
+              <Sign title={`${experienceYears} YEARS XP`}>Production ML</Sign>
               <Sign title="SUPPLY CHAIN">Forecasting + risk</Sign>
               <Sign title="RL + ANOMALY">Decision systems</Sign>
             </div>

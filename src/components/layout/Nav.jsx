@@ -8,7 +8,7 @@ export default function Nav({ person, view, navigate }) {
   const [solid, setSolid] = useState(view !== 'home');
   const [open, setOpen] = useState(false);
   const reducedMotion = useReducedMotion();
-  const hireMagnetic = useMagnetic(!reducedMotion);
+  const contactMagnetic = useMagnetic(!reducedMotion);
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 60 || view !== 'home');
@@ -62,8 +62,8 @@ export default function Nav({ person, view, navigate }) {
         <button type="button" className="nlink link-reset" onClick={() => goToSection('skills')}>Skills</button>
         <ThemeToggle />
         <OpenToWorkPill label={person.availabilityShort || person.availability} onClick={() => goToSection('contact')} />
-        <div className="magnetic-wrap" onMouseMove={hireMagnetic.onMouseMove} onMouseLeave={hireMagnetic.onMouseLeave} style={hireMagnetic.style}>
-          <a href={`mailto:${person.email}`} className="ncta">Hire Me</a>
+        <div className="magnetic-wrap" onMouseMove={contactMagnetic.onMouseMove} onMouseLeave={contactMagnetic.onMouseLeave} style={contactMagnetic.style}>
+          <a href={`mailto:${person.email}`} className="ncta">Email</a>
         </div>
       </div>
     </nav>

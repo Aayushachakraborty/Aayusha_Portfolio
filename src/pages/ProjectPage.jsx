@@ -72,7 +72,7 @@ export default function ProjectPage({ project, navigate, meta }) {
           <div className="demo-teaser">
             <div className="demo-teaser-viewport" aria-hidden="true">
               <Suspense fallback={<div className="demo-panel"><p>Loading demo…</p></div>}>
-                {Demo ? <Demo type={project.demo} /> : <div className="demo-panel"><p>Demo unavailable.</p></div>}
+                {Demo ? <Demo type={project.demo} /> : <div className="demo-panel"><p>Demo not ready.</p></div>}
               </Suspense>
             </div>
             <div className="demo-teaser-overlay">
@@ -93,7 +93,7 @@ export default function ProjectPage({ project, navigate, meta }) {
           </div>
         ) : (
           <Suspense fallback={<div className="demo-panel"><p>Loading demo…</p></div>}>
-            {Demo ? <Demo type={project.demo} /> : <div className="demo-panel"><p>Demo unavailable.</p></div>}
+            {Demo ? <Demo type={project.demo} /> : <div className="demo-panel"><p>Demo not ready.</p></div>}
           </Suspense>
         )}
       </section>
