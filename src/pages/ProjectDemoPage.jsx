@@ -18,10 +18,10 @@ export default function ProjectDemoPage({ project, navigate, meta }) {
       <div className="project-demo-head">
         <a
           className="back-link"
-          href={`/projects/${project.slug}`}
+          href={`/project/${project.slug}`}
           onClick={(event) => {
             event.preventDefault();
-            navigate(`/projects/${project.slug}`);
+            navigate(`/project/${project.slug}`);
           }}
         >
           Back to project

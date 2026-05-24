@@ -4,10 +4,20 @@
       "slug": "datanirnaya-supply-chain-intelligence",
       "number": "01",
       "badge": "Flagship SaaS",
-      "title": "DataNirnaya — Supply Chain Intelligence Platform",
+      "title": "DataNirnaya - Supply Chain Intelligence Platform",
       "impact": "Unified forecasting, inventory, supplier risk, and anomaly detection in one executive workspace.",
       "summary": "Full-stack platform fusing four ML services into a single decision surface for ops leaders. React + Vite + Tailwind + Recharts on the front; FastAPI microservices on the back.",
-      "stack": ["React", "Vite", "Tailwind", "Recharts", "FastAPI", "Python", "XGBoost", "Prophet", "LightGBM"],
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind",
+        "Recharts",
+        "FastAPI",
+        "Python",
+        "XGBoost",
+        "Prophet",
+        "LightGBM"
+      ],
       "highlights": [
         "Modular API abstraction so frontend renders identically on mock or live data",
         "FastAPI microservices for Prophet/LightGBM forecasting, Isolation Forest anomaly, XGBoost supplier scoring",
@@ -22,88 +32,37 @@
       "tags": ["Forecasting", "MLOps", "Full-Stack"]
     },
     {
-      "slug": "dynamic-pricing-engine-rl",
+      "slug": "loanlens-compliance-copilot",
       "number": "02",
-      "badge": "Reinforcement Learning",
-      "title": "Dynamic Pricing Engine — RL",
-      "impact": "12–18% revenue uplift over rule-based pricing in 12-month backtests.",
-      "summary": "PPO agent adjusting prices on demand elasticity, competitor moves, and inventory. Custom Gym env with Prophet forecasts as state features.",
-      "stack": ["Python", "RLlib", "PPO", "Prophet", "Scikit-learn", "OpenAI Gym"],
+      "badge": "BFSI GenAI",
+      "title": "LoanLens - Compliance Copilot for Retail Lending",
+      "impact": "Source-grounded compliance Q&A, calibrated credit decisions, and RAGAS quality checks in one lending workspace.",
+      "summary": "LoanLens turns RBI master directions and internal credit policy into an auditable GenAI service for retail lending teams. It combines hybrid retrieval, citation-forced answers, XGBoost decisioning, SHAP explanations, and evaluation tracking.",
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind",
+        "FastAPI",
+        "FAISS",
+        "BM25",
+        "BGE Reranker",
+        "XGBoost",
+        "SHAP",
+        "RAGAS",
+        "MLflow"
+      ],
       "highlights": [
-        "Custom Gym env modeling elasticity, competitor moves, and stock position",
-        "Prophet forecasts injected as state features",
-        "12–18% lift vs rule-based baseline in backtests"
+        "Hybrid BM25 + dense retrieval with reciprocal rank fusion and cross-encoder reranking",
+        "Credit decisioning with calibrated XGBoost scores and SHAP-grounded explanations",
+        "RAGAS evaluation dashboard tracking faithfulness, context precision, and answer relevancy"
       ],
       "repoUrl": "https://github.com/Aayushachakraborty",
-      "demo": "pricing",
-      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
-      "problem": "Rule-based pricing leaves margin on the table when demand and competitors move daily.",
-      "approach": "PPO agent inside a custom Gym env. Prophet forecasts as state features. Reward function tuned for revenue under inventory constraints.",
-      "outcome": "12–18% revenue uplift over rule-based baseline across 12-month backtests.",
-      "tags": ["RL", "Pricing", "Forecasting"]
-    },
-    {
-      "slug": "supply-chain-disruption-prediction",
-      "number": "03",
-      "badge": "Risk & Forecasting",
-      "title": "Supply Chain Disruption Prediction",
-      "impact": "0.87 ROC-AUC; SHAP-driven analysis cut simulated disruption costs 15–20%.",
-      "summary": "ML pipeline predicting supplier delays from lead-time, weather, port-congestion, and reliability features. SHAP surfaces the drivers procurement teams act on.",
-      "stack": ["Python", "XGBoost", "LightGBM", "Statsmodels", "SHAP"],
-      "highlights": [
-        "Multi-source feature engineering: lead-time, weather, port congestion, reliability history",
-        "ROC-AUC 0.87 on holdout",
-        "SHAP-driven feature analysis reduced simulated disruption costs 15–20%"
-      ],
-      "repoUrl": "https://github.com/Aayushachakraborty",
-      "demo": "supply chain",
-      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80",
-      "problem": "Procurement gets blindsided by supplier delays. Static SLAs don't capture weather, port, or geopolitical signal.",
-      "approach": "Gradient-boosted classifier on multi-source signals. SHAP attribution surfaces drivers procurement teams can actually act on.",
-      "outcome": "0.87 ROC-AUC. Simulated disruption costs down 15–20%.",
-      "tags": ["Risk", "Supply Chain", "Explainability"]
-    },
-    {
-      "slug": "multi-agent-business-strategy-simulator",
-      "number": "04",
-      "badge": "Multi-Agent RL",
-      "title": "Multi-Agent Business Strategy Simulator",
-      "impact": "Compressed strategic planning cycles from weeks to minutes.",
-      "summary": "Digital-twin simulation with five RL agents — Finance, Procurement, Sales, HR, Operations — negotiating tradeoffs instead of producing one black-box output.",
-      "stack": ["Python", "Mesa", "RLlib", "Kedro", "MLflow"],
-      "highlights": [
-        "Five RL agents (Finance, Procurement, Sales, HR, Ops) with their own reward functions",
-        "Kedro + MLflow for reproducible experiment tracking",
-        "Planning cycle: weeks → minutes"
-      ],
-      "repoUrl": "https://github.com/Aayushachakraborty",
-      "demo": "multi-agent",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
-      "problem": "Strategic planning takes weeks because no one agrees on tradeoffs between finance, ops, and procurement.",
-      "approach": "Five RL agents, one per function, each with its own reward. Mesa for simulation, RLlib for policy training, Kedro + MLflow for reproducibility.",
-      "outcome": "Planning cycle from weeks to minutes. Tradeoffs become visible, negotiable, traceable.",
-      "tags": ["Multi-Agent", "RL", "MLOps"]
-    },
-    {
-      "slug": "marketing-mix-attribution-engine",
-      "number": "05",
-      "badge": "MMM & Attribution",
-      "title": "Marketing Mix & Attribution Engine",
-      "impact": "+25% ad-spend efficiency and +20% ROI across paid channels.",
-      "summary": "Marketing Mix Model + multi-touch attribution layered with an A/B testing framework. Supported clients scaling to 300K+ MAU.",
-      "stack": ["Python", "MMM", "Multi-Touch Attribution", "A/B Testing", "SQL", "Google Analytics"],
-      "highlights": [
-        "MMM disentangling spend → revenue across paid channels",
-        "Multi-touch attribution for journey-level credit",
-        "A/B framework across 12+ campaigns; +82% organic traffic, +15% conversions"
-      ],
-      "repoUrl": "https://github.com/Aayushachakraborty",
-      "demo": "mmm",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
-      "problem": "Marketing leaders can't agree on which channel deserves the next dollar. Last-click lies.",
-      "approach": "MMM for top-down attribution, multi-touch for journey credit, A/B framework for causal lifts. Three lenses, one budget.",
-      "outcome": "+25% ad-spend efficiency, +20% ROI, clients scaling to 300K+ MAU.",
-      "tags": ["MMM", "Attribution", "Marketing"]
+      "demo": "loanlens",
+      "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+      "problem": "Compliance and credit teams cannot rely on black-box LLM answers when retail lending decisions must be explainable, policy-grounded, and auditable.",
+      "approach": "A React + FastAPI product with hybrid retrieval over RBI and internal policy documents, citation-forced generation, calibrated credit scoring, SHAP explanations, and a RAGAS harness for quality control.",
+      "outcome": "A portfolio-ready proof of concept that answers lending policy questions with citations, explains applicant decisions, and surfaces quality metrics before a model reaches production.",
+      "tags": ["GenAI", "Compliance", "Credit Risk"]
     }
   ]
 }
