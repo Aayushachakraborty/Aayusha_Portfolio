@@ -33,15 +33,34 @@ function TiltCard({ project, index, navigate, reducedMotion }) {
           <h3 className="pc-title">{project.title}</h3>
           <div className="pc-impact">{project.impact}</div>
           <p className="pc-desc">{project.summary}</p>
+          <div className="pc-detail-grid" aria-label={`${project.title} details`}>
+            <div>
+              <span>Problem</span>
+              <p>{project.problem}</p>
+            </div>
+            <div>
+              <span>Approach</span>
+              <p>{project.approach}</p>
+            </div>
+            <div>
+              <span>Outcome</span>
+              <p>{project.outcome}</p>
+            </div>
+          </div>
+          {project.highlights?.length ? (
+            <ul className="pc-highlights" aria-label={`${project.title} highlights`}>
+              {project.highlights.slice(0, 3).map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          ) : null}
           <div className="pc-stack">
             {project.stack?.map((item) => <span className="pcs" key={item}>{item}</span>)}
           </div>
           <a
-            href={`/projects/${project.slug}`}
+            href={`/project/${project.slug}`}
             className="pc-link"
             onClick={(event) => {
               event.preventDefault();
-              navigate(`/projects/${project.slug}`);
+              navigate(`/project/${project.slug}`);
               window.scrollTo({ top: 0, behavior: 'auto' });
             }}
           >

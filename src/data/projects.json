@@ -63,6 +63,34 @@
       "approach": "A React + FastAPI product with hybrid retrieval over RBI and internal policy documents, citation-forced generation, calibrated credit scoring, SHAP explanations, and a RAGAS harness for quality control.",
       "outcome": "A portfolio-ready proof of concept that answers lending policy questions with citations, explains applicant decisions, and surfaces quality metrics before a model reaches production.",
       "tags": ["GenAI", "Compliance", "Credit Risk"]
+    },
+    {
+      "slug": "brewmate-marketing-mix-model",
+      "number": "03",
+      "badge": "MMM Analytics",
+      "title": "BrewMate - Market Mix Model",
+      "impact": "In-browser MMM workspace with adstock, saturation, ridge regression, bootstrap uncertainty, and budget optimization.",
+      "summary": "Interactive marketing analytics project that simulates 156 weeks of multi-channel spend, fits a market mix model, decomposes incremental sales, diagnoses residuals, and recommends budget reallocations.",
+      "stack": [
+        "React",
+        "Recharts",
+        "mathjs",
+        "Ridge Regression",
+        "Bootstrap",
+        "Marketing Analytics"
+      ],
+      "highlights": [
+        "Synthetic data generator with known channel response parameters for TV, video, search, social, and print",
+        "Client-side adstock, saturation transforms, ridge fitting, ROI intervals, and residual diagnostics",
+        "Budget optimizer that compares current allocation against response-aware recommendations"
+      ],
+      "repoUrl": "https://github.com/Aayushachakraborty",
+      "demo": "mmm",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
+      "problem": "Marketing teams need to know which channels actually drive incremental revenue, but raw spend and sales correlations hide carryover, saturation, promotions, price effects, and uncertainty.",
+      "approach": "A full React dashboard models media response with geometric adstock, saturation, ridge regression, bootstrap confidence intervals, and response-based budget reallocation.",
+      "outcome": "A portfolio-ready MMM case study that turns channel spend into defensible ROI, contribution shares, diagnostics, and next-budget recommendations.",
+      "tags": ["Marketing Analytics", "MMM", "Optimization"]
     }
   ]
 }
